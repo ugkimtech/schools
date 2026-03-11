@@ -35,12 +35,12 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Check node
+      - name: Check node and folder structure
         run: |
           ls
           node -v
           npm -v
-    
+          
       # - name: Install Frontend Dependencies
       #   run: |
       #     cd frontend
