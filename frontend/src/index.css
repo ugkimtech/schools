@@ -1,0 +1,27 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar{
+  width: 5px;
+}
+/* ::-webkit-scrollbar-track{
+  width: 2px;
+  background-color: grey;
+} */
+
+html{
+  width: 100vw;
+  height: 100vh;
+  margin: 0px;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  background-color: var(--bg);
+}

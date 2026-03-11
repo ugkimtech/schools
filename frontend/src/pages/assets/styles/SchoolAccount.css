@@ -1,0 +1,66 @@
+.school-account{
+    width: 80%;
+    max-width: 400px;
+    max-height: 90%;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid lightgray;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.3);
+}
+
+.create-form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+}
+
+.create-form input, select{
+    width: 80%;
+    height: 25px;
+    border: none;
+    border-bottom: 2px solid blue;
+    background-color: white;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+
+.create-form label{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.create-form button{
+    border: none;
+    background-color: blue;
+    width: 50%;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.create-form button:hover{
+    cursor: pointer;
+    background-color: white;
+    color: blue;
+    border: 2px solid blue;
+}
+
+.error{
+    color: red;
+    font-size: 13px;
+}

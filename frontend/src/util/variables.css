@@ -1,0 +1,52 @@
+/* 
+imported in main.jsx 
+*/
+
+:root {
+    /* light theme */
+    --bg: #FFFFFF;
+    --text1: #1a1a1a;
+    --text2: #666666;
+    --btn: #1a73e8;
+    --card-body: #FFFFFF;
+    --card-border: #EEEEEE;
+    --numbers: #5a5c69;
+    --success: #28a745;
+    --warning: #ff9f43;
+    --error: #ff4c4c;
+    --shadow: rgba(0,0,0,0.1);
+    --input-bg: #FFFFFF;
+    --input-txt: #111827;
+    --input-border: #D1D5DB;
+    --hover-input: #3B82F6;
+    --table-bg: #FFFFFF;
+    --table-header: #F3F4F6;
+    --table-txt: #1F2937;
+    --border: 1px solid #EEEEEE;
+    --theme-icon: #151c2c;
+    --border-icon: 1px solid #151c2c;
+}
+
+[data-theme="dark"] {
+    --bg: #151c2c;
+    --text1: #FFFFFF;
+    --text2: #cccccc;
+    --btn: #38bdf8;
+    --card-body: #151c2c;
+    --card-border: #1e293b;
+    --numbers: #38bdf8;
+    --success: rgba(28, 200, 138, 0.2);
+    --warning: rgba(255,159,67,0.2);
+    --error: rgba(255, 76, 76, 0.2);
+    --shadow: rgba(0,0,0,0.5);
+    --input-bg: #1f2937;
+    --input-txt: #E5E7EB;
+    --input-border: #374151;
+    --hover-input: #38bdf8;
+    --table-bg: #1e293b;
+    --table-header: #111827;
+    --table-txt: #E5E7EB;
+    --border: 1px solid #1e293b;
+    --theme-icon: #FFFFFF;
+    --border-icon: 1px solid #FFFFFF;
+}

@@ -1,0 +1,139 @@
+.dashboard-card {
+  background: var(--card-body);
+  border: var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+@media (max-width: 768px) {
+  .dashboard-card {
+    padding: 16px;
+  }
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .view-all-btn {
+    background: none;
+    border: none;
+    color: var(--btn);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  
+  .view-all-btn:hover {
+    text-decoration: underline;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 0 -24px;
+    padding: 0 24px;
+  }
+  
+  @media (max-width: 768px) {
+    .table-responsive {
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+  }
+  
+  .department-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .department-table th {
+    text-align: left;
+    padding: 12px 8px;
+    color: var(--text2);
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-bottom: var(--border);
+  }
+  
+  .department-table td {
+    padding: 12px 8px;
+    border-bottom: var(--border);
+    color: var(--table-txt);
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+    margin: 0 -24px;
+    padding: 0 24px;
+  }
+  
+  @media (max-width: 768px) {
+    .table-responsive {
+      margin: 0 -16px;
+      padding: 0 16px;
+    }
+  }
+  
+  .department-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .department-table th {
+    text-align: left;
+    padding: 12px 8px;
+    color: var(--text2);
+    font-weight: 500;
+    font-size: 0.85rem;
+    border-bottom: var(--border);
+  }
+  
+  .department-table td {
+    padding: 12px 8px;
+    border-bottom: var(--border);
+    color: var(--table-txt);
+  }
+  
+  .dept-name {
+    font-weight: 600;
+    color: var(--text1);
+  }
+  
+  .badge {
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  
+  .badge.success {
+    background: rgba(40, 167, 69, 0.1);
+    color: var(--success);
+  }
+  
+  .badge.warning {
+    background: rgba(255, 159, 67, 0.1);
+    color: var(--warning);
+  }
+  

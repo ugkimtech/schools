@@ -1,0 +1,245 @@
+.sidebar {
+    width: 280px;
+    background: var(--card-body);
+    border-right: var(--border);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 0 8px var(--shadow);
+    z-index: 100;
+}
+
+@media (max-width: 1000px) {
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .sidebar-overlay {
+    display: block;
+  }
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .sidebar-overlay {
+        display: block;
+    }
+}
+
+.sidebar.open {
+    transform: translateX(0);
+    }
+
+
+.sidebar-header {
+    padding: 24px;
+    border-bottom: var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.school-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon .school-badge{
+    width: 48px;
+    height: 48px;
+    background: var(--btn);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+}
+
+.logo-text h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text1);
+    margin-bottom: 4px;
+}
+
+.logo-text span {
+    font-size: 0.75rem;
+    color: var(--text2);
+}
+
+.close-sidebar {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text1);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .close-sidebar {
+        display: block;
+    }
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+
+.nav-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: var(--text2);
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-item svg {
+    font-size: 1.2rem;
+}
+
+.nav-item:hover {
+    background: var(--table-header);
+    color: var(--text1);
+}
+
+.nav-item.active {
+    background: var(--btn);
+    color: white;
+}
+
+.sidebar-footer {
+    padding: 24px;
+    border-top: var(--border);
+}
+
+.menu-toggle {
+    display: none;
+    background: var(--card-body);
+    border: var(--border);
+    color: var(--text1);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+@media (max-width: 1000px) {
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+.sidebar-footer {
+    padding: 24px;
+    border-top: var(--border);
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.admin-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--btn);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.admin-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-name {
+    font-weight: 600;
+    color: var(--text1);
+}
+
+.admin-role {
+    font-size: 0.8rem;
+    color: var(--text2);
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 12px;
+  border: var(--border);
+  background: var(--card-body);
+  color: var(--error);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: var(--error);
+  color: white;
+  border-color: var(--error);
+}

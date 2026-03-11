@@ -1,0 +1,19 @@
+.theme{
+    border: none;
+    background-color: var(--card-body);
+    position: relative;
+    right: 0px;
+}
+
+.icon {
+    width: 20px;
+    height: auto;
+    border: var(--border-icon);
+    border-radius: 100%;
+    padding: 3px;
+    color: var(--theme-icon);
+}
+
+.icon:hover{
+    cursor: pointer;
+}
