@@ -29,6 +29,15 @@ jobs:
         run: |
           cd backend
           python manage.py test
+
+      - name: Verify Node installation
+        run: |
+          node -v
+          npm -v
+      - name: Show project structure
+        run: |
+          ls
+          ls frontend
       
       - name: Set up Node.js
          uses: actions/setup-node@v3
