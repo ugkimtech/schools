@@ -45,8 +45,7 @@ jobs:
         run: |
           cd frontend
           ls
-          cd src
-          ls
+          
       #    npm install
   
       # - name: Run Frontend Tests
