@@ -151,10 +151,18 @@ const [department, setDep] = useState(null)
 
 
   
-const header={title:'students', icon:<FaUserCircle />}
-const th=['aa','bb','cc']
-const td=[
-  {name:'name', age:34, dob:'5/8/9'}
+const header={title:'students', icon:<FaUserCircle />, manage:true}
+const columns=[
+                {header:'St Name', accessor:'name'},
+                {header:'Age', accessor:'age'},
+                {header: 'Course', accessor: 'course'},
+                {header: 'Semester', accessor: 'sem'},
+              ]
+const tdata=[
+  {name:'kim', age:4, course:'f', sem:4},
+  {name:'kimera', age:25, course:'cs', sem:43},
+  {name:'df', age:425, course:'cffs', sem:94},
+  {name:'fkgd', age:2755, course:'fkjccs', sem:656},
 ]
 
   if(profile){return (
@@ -171,7 +179,7 @@ const td=[
           {/* Main Dashboard Grid */}
           {/* <ColumnGridLauyout /> */}
 
-          <TableCard header={header} th={th} td={td} />
+          <TableCard header={header} columns={columns} data={tdata} />
           
 
           {/* Footer Stats */}

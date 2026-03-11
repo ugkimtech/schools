@@ -1,42 +1,38 @@
-import { FaBell } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import "./assets/styles/TableCard.css"
-import { useEffect } from "react";
 
-export default function TableCard({header, th=[], td=[]}){
-    useEffect(()=>{
-        console.log('td',td)
-    })
+export default function TableCard({header, columns=[], data=[]}){
+
     return (
         <>
             <div className="dashboard-card">
                 <div className="card-header">
                     <h3>{header.icon} {header.title}</h3>
-                    {/* <button className="view-all-btn">
+                    {header.manage ? <button className="view-all-btn">
                         Manage <FaArrowRight />
-                    </button> */}
+                    </button> :''}
                 </div>
                 <div className="table-responsive">
                     <table className="department-table">
                         <thead>
                             <tr>
-                                {th.map((item)=> (
-                                    <th>{item}</th>
+                                {columns.map((item, headerIndex)=> (
+                                    <th key={headerIndex}>{item.header}</th>
                                 ))}
                             </tr>
                         </thead>
                         <tbody>
-                            {/* {td.map((data, index) => (
-                            <tr key={index}>
-                                <td className="dept-name">{data.name}</td>
-                                <td className="dept-name">{data.age}</td>
-                                <td className="dept-name">{data.dob}</td>
-                                <td>
-                                    <span className={`badge ${45 >= 90 ? 'success' : 'warning'}`}>
-                                        z
-                                    </span>
-                                </td>
-                            </tr>
-                            ))} */}
+                            {
+                                data.map((row, index)=> (
+                                    <tr key={index}>
+                                        {
+                                            columns.map((col, colIndex)=> (
+                                                <td key={colIndex}>{row[col.accessor]}</td>
+                                            ))
+                                        }
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>
