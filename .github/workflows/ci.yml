@@ -41,10 +41,11 @@ jobs:
           node -v
           npm -v
           
-      # - name: Install Frontend Dependencies
-      #   run: |
-      #     cd frontend
-      #     npm install
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend
+          ls
+      #    npm install
   
       # - name: Run Frontend Tests
       #   run: |
