@@ -45,10 +45,9 @@ jobs:
         run: |
           cd frontend
           ls
-          
-      #    npm install
+          npm install
   
-      # - name: Run Frontend Tests
-      #   run: |
-      #     cd frontend
-      #     npm test -- --watchAll=false
+      - name: Run Frontend Tests
+        run: |
+          cd frontend
+          npm test -- --watchAll=false
