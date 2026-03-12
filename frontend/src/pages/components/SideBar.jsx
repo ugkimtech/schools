@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { FaTimes, FaSignOutAlt, FaBars } from "react-icons/fa";
-import "./assets/styles/Sidebar.css";
+import "./assets/styles/SideBar.css";
 
 
 export default function Sidebar({menuItems, schoolProfile, title, userProfile}){
