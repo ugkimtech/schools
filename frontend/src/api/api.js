@@ -1,4 +1,4 @@
-import "../util/settings"
+import { BASE_URL } from "../util/settings";
 
 class APICall {
     constructor() {

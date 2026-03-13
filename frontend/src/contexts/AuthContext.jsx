@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import "../util/settings.js";
+import { BASE_URL } from "../util/settings";
 
 
 export const AuthContext = createContext();
