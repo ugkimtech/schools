@@ -4,10 +4,18 @@ FROM python:3.11-slim
 # set working directory
 WORKDIR /app
 
+# build arguments
+ARG SECRET_KEY
+ARG DATABASE_URL
+ENV SECRET_KEY=$SECRET_KEY
+ENV DATABASE_URL=$DATABASE_URL
+
 # copy django project files
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN python manage.py collectstatic --noinput
+RUN python manage.py makemigrations
+RUN python manage.py migrate --noinput
 
 # expose port for django
 EXPOSE 8000

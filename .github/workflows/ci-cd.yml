@@ -44,7 +44,11 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
 
       - name: Build backend docker image
-        run: docker build -t ${{secrets.DOCKER_USERNAME}}/schools-backend ./backend
+        run: |
+          docker build \
+            --build-arg SECRET_KEY=${{secrets.SECRET_KEY}}
+            --build-arg DATABASE_URL=${{secrets.SCHOOLS_DATABASE_URL}} \
+            -t ${{secrets.DOCKER_USERNAME}}/schools-backend ./backend
       
       - name: Push backend image
         run: docker push ${{secrets.DOCKER_USERNAME}}/schools-backend:latest
