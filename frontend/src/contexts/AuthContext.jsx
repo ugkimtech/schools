@@ -87,7 +87,7 @@ export const AuthProvider = ({children}) => {
 
         }catch(e){
             console.log(e)
-            setApiError('Un expected error has occured, please try again');
+            setApiError(`Un expected error has occured, please try again ${e}`);
             return 0;
         }
     }
