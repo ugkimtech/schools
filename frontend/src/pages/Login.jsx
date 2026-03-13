@@ -1,6 +1,6 @@
 import { AuthContext } from "../contexts/AuthContext.jsx";
 import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ToggleTheme from "./components/Theme.jsx";
 import "./assets/styles/Login.css";
 import APICall from "../api/api.js";
@@ -74,7 +74,7 @@ export default function Login(){
                 
                 <button type="submit">Login</button>
             </form>
-            <p className="setup">No Account? <a href="/createschool">Click here to Setup your school</a></p>
+            <p className="setup">No Account? <a><Link to="/createschool">Click here to Setup your school</Link></a></p>
         </div>
     );
 }
