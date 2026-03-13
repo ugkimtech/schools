@@ -139,7 +139,7 @@ export default function SchoolAccount(){
 
                 <button type="submit">Create</button>
             </form>
-            <p className="setup">Do you have an Account? <a href="/login">Click here to Login</a></p>
+            <p className="setup">Do you have an Account? <a><Link to="/login">Click here to Login</Link></a></p>
         </div>
     );
 }
