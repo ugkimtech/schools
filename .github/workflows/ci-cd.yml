@@ -35,6 +35,9 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
           python manage.py test
+      
+      - name: Collect static files
+        run: python manage.py collectstatic --noinput
 
       - name: Docker login
         uses: docker/login-action@v3
