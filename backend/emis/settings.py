@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,7 +91,7 @@ WSGI_APPLICATION = 'emis.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default="sqlite:///db.sqlite3"
+        default=f"sqlite:///{BASE_DIR}/db.sqlite3"
     )
 }
 
