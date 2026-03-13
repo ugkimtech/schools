@@ -14,11 +14,10 @@ ENV DATABASE_URL=$DATABASE_URL
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
 RUN python manage.py collectstatic --noinput
-RUN python manage.py makemigrations
-RUN python manage.py migrate --noinput
-
 # expose port for django
 EXPOSE 8000
 
 # start gunicon server
-CMD ["gunicorn", "emis.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD python manage.py migrate --noinput && \
+    python manage.py collectstatic --noinput && \
+    gunicorn emis.wsgi:application --bind 0.0.0.0:8000
