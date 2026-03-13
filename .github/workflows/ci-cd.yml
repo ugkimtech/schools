@@ -9,16 +9,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # checkout repo
       - uses: actions/checkout@v4
 
-      # setup node (react build)
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # build react front end
       - name: Build react frontend
         working-directory: ./frontend
         run: |
@@ -31,8 +28,7 @@ jobs:
         with:
           python-version: 3.11
 
-      # install django dependecies
-      - name: Install django dependencies
+      - name: Install django dependencies & test
         working-directory: ./backend
         run: |
           ls
@@ -40,7 +36,6 @@ jobs:
           pip install -r requirements.txt
           python manage.py test
 
-      # login to docker hub
       - name: Docker login
         uses: docker/login-action@v3
         with:
@@ -50,14 +45,11 @@ jobs:
       - name: Build backend docker image
         run: docker build -t ${{secrets.DOCKER_USERNAME}}/schools-backend ./backend
       
-      # push backend image
       - name: Push backend image
         run: docker push ${{secrets.DOCKER_USERNAME}}/schools-backend:latest
 
-      # build front end image
       - name: Build front end docker image
         run: docker build -t ${{secrets.DOCKER_USERNAME}}/schools-frontend ./frontend
 
-      # push frontend image
       - name: Push frontend image
         run: docker push ${{secrets.DOCKER_USERNAME}}/schools-frontend:latest
