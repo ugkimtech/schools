@@ -48,8 +48,6 @@
   .mini-event {
     display: flex;
     align-items: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
     gap: 12px;
     padding: 8px;
     border-radius: 10px;

@@ -182,9 +182,9 @@ const tdata=[
 
           {/* <TableCard header={header} columns={columns} data={tdata} /> */}
 
-          <Events />
+          {/* <Events /> */}
 
-          {/* <ColumnGridLauyout /> */}
+          <ColumnGridLauyout />
 
           {/* Footer Stats */}
           <div className="dashboard-footer">
