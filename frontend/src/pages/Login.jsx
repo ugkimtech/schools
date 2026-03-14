@@ -33,7 +33,6 @@ export default function Login(){
             const api = new APICall();
             const userdata = await api.get(`user/getuser/${user.user_id}/`);
             if(userdata){
-                console.log(userdata.groups[0])
                 userdata.groups[0] === 'school'?navigate('/school'):alert(`No dashboard for ${userdata.groups[0]}`)
             }
         }
@@ -78,7 +77,7 @@ export default function Login(){
                 
                 <button type="submit">Login</button>
             </form>
-            <p className="setup">No Account? <a><Link to="/createschool">Click here to Setup your school</Link></a></p>
+            <p className="setup">No Account? <Link to="/createschool">Click here to Setup your school</Link></p>
             {spin ? <Spiner state={'start'} /> : ''}
         </div>
     );

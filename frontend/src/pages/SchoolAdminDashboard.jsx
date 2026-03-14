@@ -42,6 +42,7 @@ import ColumnGridLauyout from './components/ColumnGridLayout';
 import TableCard from './components/TableCard';
 import Spiner from './components/Spiner';
 import Events from './components/Events';
+import PerformanceSummary from './components/PerformanceSummary';
 
 
 const SchoolAdminDashboard = () => {
@@ -182,7 +183,9 @@ const tdata=[
 
           {/* <TableCard header={header} columns={columns} data={tdata} /> */}
 
-          <Events />
+          {/* <Events /> */}
+          
+          <PerformanceSummary />
 
           {/* <ColumnGridLauyout /> */}
 
