@@ -15,6 +15,7 @@ imported in main.jsx
     --warning: #ff9f43;
     --error: #ff4c4c;
     --shadow: rgba(0,0,0,0.1);
+    --box-shadow: 3px 2px 5px rgba(0,0,0,0.1);
     --input-bg: #FFFFFF;
     --input-txt: #111827;
     --input-border: #D1D5DB;
@@ -39,6 +40,7 @@ imported in main.jsx
     --warning: rgba(255,159,67,0.2);
     --error: rgba(255, 76, 76, 0.2);
     --shadow: rgba(0,0,0,0.5);
+    --box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
     --input-bg: #1f2937;
     --input-txt: #E5E7EB;
     --input-border: #374151;

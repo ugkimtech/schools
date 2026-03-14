@@ -40,6 +40,7 @@ import SmallCardsGrid from './components/StatCardsGrid';
 import StatCardsGrid from './components/StatCardsGrid';
 import ColumnGridLauyout from './components/ColumnGridLayout';
 import TableCard from './components/TableCard';
+import Spiner from './components/Spiner';
 
 
 const SchoolAdminDashboard = () => {
@@ -171,7 +172,6 @@ const tdata=[
         
         <main className="main-content">
           <TopBar />
-
 
           {/* contents */}
           <StatCardsGrid data={[{title:'name'},{title:'name'},{title:'name'},{title:'name'}]} />

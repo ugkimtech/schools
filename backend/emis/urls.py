@@ -32,4 +32,7 @@ urlpatterns = [
     path('fees/', include('fees.urls')),
     path('academics/', include('academics.urls')),
     path('library/', include('library.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#dev only
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)#dev only

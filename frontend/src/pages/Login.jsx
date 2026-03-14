@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ToggleTheme from "./components/Theme.jsx";
 import "./assets/styles/Login.css";
 import APICall from "../api/api.js";
+import Spiner from "./components/Spiner.jsx";
 
 export default function Login(){
     
@@ -12,6 +13,7 @@ export default function Login(){
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [greeting, setGreating] = useState('');
+    const [spin, setSpin] = useState(false);
 
     useEffect(()=>{
         groups(); // auto redirect on app refresh
@@ -43,8 +45,10 @@ export default function Login(){
             alert('Please fill in all fields.');
             return
         }
+        setSpin(true);
         e.preventDefault();
         const status = await login(username, password);
+        setSpin(false);
         if(status===200) groups();
     };
 
@@ -75,6 +79,7 @@ export default function Login(){
                 <button type="submit">Login</button>
             </form>
             <p className="setup">No Account? <a><Link to="/createschool">Click here to Setup your school</Link></a></p>
+            {spin ? <Spiner state={'start'} /> : ''}
         </div>
     );
 }

@@ -3,14 +3,17 @@ import { AuthContext } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import APICall from "../api/api";
 import "./assets/styles/SchoolAccount.css";
+import Spiner from "./components/Spiner";
 
 
 export default function SchoolAccount(){
     const {login} = useContext(AuthContext);
     const navigate = useNavigate();
     const [error, setError] = useState(null);
+    const [spin, setSpin] = useState(false);
 
     const create = async (e)=>{
+        setSpin(true);
         e.preventDefault();
         setError(null);
 
@@ -31,6 +34,7 @@ export default function SchoolAccount(){
         const api = new APICall();
         const response = await api.create('school/create-school/', data);
         const logedin = await login(data.username, data.password);
+        setSpin(false);
         logedin === 200 ? navigate('school') :setError(response);
     }
 
@@ -141,6 +145,7 @@ export default function SchoolAccount(){
                 <button type="submit">Create</button>
             </form>
             <p className="setup">Do you have an Account? <a><Link to="/login">Click here to Login</Link></a></p>
+            {spin ? <Spiner state={'start'} /> : ''}
         </div>
     );
 }

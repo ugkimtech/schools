@@ -1,0 +1,39 @@
+.main-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    pointer-events: all;
+}
+
+.spiner-container{
+    width: 10vw;
+    height: 10vw;
+    padding: 10px;
+    background-color: var(--card-body);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spiner {
+    width: 5vw;
+    height:5vw;
+    border: 0.5vw dotted lightgray;
+    border-radius: 100%;
+    border-top-color: blue;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to{
+        transform: rotate(360deg);
+    }
+}
