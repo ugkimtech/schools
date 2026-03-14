@@ -268,21 +268,6 @@ a{
 
 
 
-.view-all-btn {
-  background: none;
-  border: none;
-  color: var(--btn);
-  font-size: 0.9rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.view-all-btn:hover {
-  text-decoration: underline;
-}
 
 /* Approvals List */
 .approvals-list {
@@ -444,74 +429,6 @@ a{
 }
 
 /* Class Stats */
-.class-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.class-stat-item {
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--table-header);
-}
-
-.class-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.class-name {
-  font-weight: 600;
-  color: var(--text1);
-}
-
-.class-teacher {
-  font-size: 0.8rem;
-  color: var(--text2);
-}
-
-.class-metrics {
-  display: flex;
-  gap: 20px;
-}
-
-.metric {
-  flex: 1;
-}
-
-.metric-label {
-  font-size: 0.7rem;
-  color: var(--text2);
-  display: block;
-  margin-bottom: 4px;
-}
-
-.progress-bar {
-  height: 6px;
-  background: var(--border);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 4px;
-}
-
-.progress {
-  height: 100%;
-  background: var(--btn);
-  border-radius: 3px;
-}
-
-.progress.performance {
-  background: var(--success);
-}
-
-.metric-value {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text1);
-}
 
 /* Schedule List */
 .schedule-list {
