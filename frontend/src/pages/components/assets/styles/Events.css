@@ -1,0 +1,94 @@
+.dashboard-card {
+    background: var(--card-body);
+    border: var(--border);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 8px var(--shadow);
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard-card {
+      padding: 16px;
+    }
+  }
+
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .card-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text1);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .event-count {
+    background: var(--btn);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+
+  .events-mini-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mini-event {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 10px;
+    background: var(--table-header);
+  }
+  
+  .event-date-mini {
+    min-width: 45px;
+    text-align: center;
+    background: var(--card-body);
+    border-radius: 8px;
+    padding: 6px;
+  }
+  
+  .event-date-mini .day {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text1);
+    display: block;
+  }
+  
+  .event-date-mini .month {
+    font-size: 0.6rem;
+    color: var(--text2);
+    text-transform: uppercase;
+  }
+  
+  .event-info {
+    flex: 1;
+  }
+  
+  .event-title {
+    font-weight: 500;
+    color: var(--text1);
+    margin-bottom: 2px;
+    font-size: 0.9rem;
+  }
+  
+  .event-details {
+    font-size: 0.7rem;
+    color: var(--text2);
+  }

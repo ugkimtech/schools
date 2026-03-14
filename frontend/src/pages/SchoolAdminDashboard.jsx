@@ -41,6 +41,7 @@ import StatCardsGrid from './components/StatCardsGrid';
 import ColumnGridLauyout from './components/ColumnGridLayout';
 import TableCard from './components/TableCard';
 import Spiner from './components/Spiner';
+import Events from './components/Events';
 
 
 const SchoolAdminDashboard = () => {
@@ -179,8 +180,11 @@ const tdata=[
           {/* Main Dashboard Grid */}
           {/* <ColumnGridLauyout /> */}
 
-          <TableCard header={header} columns={columns} data={tdata} />
-          
+          {/* <TableCard header={header} columns={columns} data={tdata} /> */}
+
+          <Events />
+
+          {/* <ColumnGridLauyout /> */}
 
           {/* Footer Stats */}
           <div className="dashboard-footer">
