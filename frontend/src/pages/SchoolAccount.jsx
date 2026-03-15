@@ -33,9 +33,14 @@ export default function SchoolAccount(){
 
         const api = new APICall();
         const response = await api.create('school/create-school/', data);
-        const logedin = await login(data.username, data.password);
-        setSpin(false);
-        logedin === 200 ? navigate('school') :setError(response);
+        if(response === 201){
+            const logedin = await login(data.get('username'), data.get('password'));
+            setSpin(false);
+            logedin === 200 ? navigate('/school') :setError(logedin);
+        }else{
+            setError(response);
+            setSpin(false)
+        }
     }
 
     return (
