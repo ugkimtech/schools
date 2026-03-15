@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./assets/styles/Events.css";
-import { FaCalendar, FaCalendarAlt } from "react-icons/fa";
+import { FaCalendarAlt } from "react-icons/fa";
 
-export default function Events({events=[{item:'football', date:'2/03', details:'sports'},{item:'football', date:'2/03', details:'sports'}]}){
+export default function Events({events=[]}){
     const [eventCount, setEventCount] = useState(0);
 
     useEffect(()=>{

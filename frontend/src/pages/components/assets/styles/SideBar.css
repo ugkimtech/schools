@@ -1,3 +1,44 @@
+/* Sidebar wrapper - controls visibility */
+.sidebar-wrapper {
+    transition: width 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Desktop styles */
+@media (min-width: 600px) {
+    .sidebar-wrapper.open {
+        width: 280px;
+    }
+    
+    .sidebar-wrapper.closed {
+        width: 0;
+        overflow: hidden;
+    }
+}
+
+/* Mobile styles */
+@media (max-width: 599px) {
+    .sidebar-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        z-index: 1000;
+        width: 280px;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .sidebar-wrapper.open {
+        transform: translateX(0);
+    }
+    
+    .sidebar-wrapper.closed {
+        transform: translateX(-100%);
+    }
+}
+
+/* Sidebar itself */
 .sidebar {
     width: 280px;
     background: var(--card-body);
@@ -5,39 +46,8 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    position: sticky;
-    top: 0;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
+    position: relative;
     box-shadow: 2px 0 8px var(--shadow);
-    z-index: 100;
-}
-
-@media (max-width: 1000px) {
-    .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        transform: translateX(-100%);
-        z-index: 1000;
-    }
-}
-
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: none;
-}
-
-@media (max-width: 1000px) {
-  .sidebar-overlay {
-    display: block;
-  }
 }
 
 .sidebar-overlay {
@@ -51,16 +61,11 @@
     display: none;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 599px) {
     .sidebar-overlay {
         display: block;
     }
 }
-
-.sidebar.open {
-    transform: translateX(0);
-    }
-
 
 .sidebar-header {
     padding: 24px;
@@ -76,7 +81,7 @@
     gap: 12px;
 }
 
-.logo-icon .school-badge{
+.logo-icon .school-badge {
     width: 48px;
     height: 48px;
     background: var(--btn);
@@ -86,6 +91,7 @@
     justify-content: center;
     color: white;
     font-size: 24px;
+    object-fit: cover;
 }
 
 .logo-text h2 {
@@ -100,18 +106,58 @@
     color: var(--text2);
 }
 
+/* Close button - always visible */
 .close-sidebar {
-    display: none;
     background: none;
     border: none;
     color: var(--text1);
     font-size: 1.5rem;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
 }
 
-@media (max-width: 1000px) {
-    .close-sidebar {
-        display: block;
+.close-sidebar:hover {
+    background: var(--table-header);
+    color: var(--error);
+    transform: scale(1.05);
+}
+
+/* Mobile open button */
+.menu-open-btn {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background: var(--btn);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+.menu-open-btn:hover {
+    background: var(--btn-hover);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 599px) {
+    .menu-open-btn {
+        display: flex;
     }
 }
 
@@ -141,6 +187,32 @@
     transition: all 0.2s;
     cursor: pointer;
     text-decoration: none;
+    position: relative;
+}
+
+/* Blue left bar for active menu item */
+.nav-item.active {
+    background: var(--table-header);
+    color: var(--btn);
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 4px;
+    background: var(--btn);
+    border-radius: 0 4px 4px 0;
+}
+
+/* For debugging - you can remove this after confirming it works */
+.nav-item.active {
+    border-left: 4px solid var(--btn) !important;
+    background-color: rgba(59, 130, 246, 0.1) !important;
 }
 
 .nav-item svg {
@@ -152,40 +224,10 @@
     color: var(--text1);
 }
 
-.nav-item.active {
-    background: var(--btn);
-    color: white;
-}
-
 .sidebar-footer {
     padding: 24px;
     border-top: var(--border);
-}
-
-.menu-toggle {
-    display: none;
-    background: var(--card-body);
-    border: var(--border);
-    color: var(--text1);
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    font-size: 1.3rem;
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-@media (max-width: 1000px) {
-    .menu-toggle {
-        display: flex;
-    }
-}
-
-.sidebar-footer {
-    padding: 24px;
-    border-top: var(--border);
+    margin-top: auto;
 }
 
 .admin-profile {
@@ -206,40 +248,65 @@
     justify-content: center;
     font-weight: 600;
     font-size: 1.1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.admin-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.admin-avatar-initials {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--btn);
 }
 
 .admin-info {
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    flex: 1;
 }
 
 .admin-name {
     font-weight: 600;
     color: var(--text1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .admin-role {
     font-size: 0.8rem;
     color: var(--text2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .logout-btn {
-  width: 100%;
-  padding: 12px;
-  border: var(--border);
-  background: var(--card-body);
-  color: var(--error);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
+    width: 100%;
+    padding: 12px;
+    border: var(--border);
+    background: var(--card-body);
+    color: var(--error);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
 .logout-btn:hover {
-  background: var(--error);
-  color: white;
-  border-color: var(--error);
+    background: var(--error);
+    color: white;
+    border-color: var(--error);
 }

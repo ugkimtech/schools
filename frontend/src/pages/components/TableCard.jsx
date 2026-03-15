@@ -1,7 +1,7 @@
 import { FaArrowRight } from "react-icons/fa";
 import "./assets/styles/TableCard.css"
 
-export default function TableCard({header, columns=[], data=[]}){
+export default function TableCard({header={}, columns=[], data=[]}){
 
     return (
         <>

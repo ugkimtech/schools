@@ -7,7 +7,7 @@
 }
 
 .menu-toggle {
-  display: none;
+  display: flex;
   background: var(--card-body);
   border: var(--border);
   color: var(--text1);
@@ -21,33 +21,12 @@
   flex-shrink: 0;
 }
 
-@media (max-width: 1024px) {
+/* On mobile, ensure it's visible */
+@media (max-width: 600px) {
   .menu-toggle {
     display: flex;
   }
 }
-
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: none;
-}
-
-@media (max-width: 1000px) {
-  .sidebar-overlay {
-    display: block;
-  }
-}
-
-.sidebar.open {
-    transform: translateX(0);
-}
-
 
 .header-search {
   flex: 1;
@@ -151,17 +130,6 @@
 .welcome-text p {
   color: var(--text2);
   font-size: 1rem;
-}
-
-.alert-badge {
-  background: rgba(255, 76, 76, 0.1);
-  color: var(--error);
-  padding: 10px 20px;
-  border-radius: 40px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
 }
 
 /* Alerts Bar */
