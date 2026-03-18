@@ -95,6 +95,7 @@ const SchoolAdminDashboard = () => {
         
         <main className="main-content">
           <TopBar 
+            title='Dashboard'
             onMenuToggle={toggleSidebar}
             sidebarOpen={sidebarOpen}
           />

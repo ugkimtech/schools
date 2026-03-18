@@ -2,7 +2,7 @@ import { FaBell, FaClock, FaBars, FaExclamationTriangle, FaCheckCircle } from "r
 import ToggleTheme from "./Theme";
 import "./assets/styles/TopBar.css";
 
-export default function TopBar({ sysAlerts, alerts, onMenuToggle, sidebarOpen }) {
+export default function TopBar({ title='', onMenuToggle, sidebarOpen }) {
     return (
         <header className="dashboard-header">
             {/* Menu toggle button - only appears when sidebar is closed */}
@@ -11,7 +11,9 @@ export default function TopBar({ sysAlerts, alerts, onMenuToggle, sidebarOpen })
                     <FaBars />
                 </button>
             )}
-                        
+
+            <h1 style={{width:'100%', textAlign:'center'}}>{title}</h1>
+
             <div className="header-search">
                 <input type="text" placeholder="Search..." />
             </div>
