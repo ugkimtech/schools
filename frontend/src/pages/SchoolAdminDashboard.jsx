@@ -38,7 +38,7 @@ const SchoolAdminDashboard = () => {
   const navigate = useNavigate();
 
   const menuItems = [
-    { label: 'Dashboard', icon: <FaHome />, path: '#' },
+    { label: 'Dashboard', icon: <FaHome />, path: '/school' },
     { label: 'Students', icon: <FaUserGraduate />, path: '#' },
     { label: 'Staff', icon: <FaUsers />, path: '#' },
     { label: 'Departments', icon: <FaLayerGroup />, path: '#' },

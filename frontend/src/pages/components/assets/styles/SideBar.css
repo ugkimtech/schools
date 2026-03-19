@@ -190,29 +190,12 @@
     position: relative;
 }
 
-/* Blue left bar for active menu item */
 .nav-item.active {
     background: var(--table-header);
+    border-left: 5px solid var(--btn) !important;
     color: var(--btn);
-    font-weight: 600;
-    position: relative;
-}
-
-.nav-item.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 20%;
-    height: 60%;
-    width: 4px;
-    background: var(--btn);
-    border-radius: 0 4px 4px 0;
-}
-
-/* For debugging - you can remove this after confirming it works */
-.nav-item.active {
-    border-left: 4px solid var(--btn) !important;
-    background-color: rgba(59, 130, 246, 0.1) !important;
+    font-weight: bold;
+    font-size: 1rm;
 }
 
 .nav-item svg {

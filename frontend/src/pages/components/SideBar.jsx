@@ -8,7 +8,8 @@ export default function Sidebar({ menuItems=[], schoolProfile, title, userProfil
     const { user, logout } = useContext(AuthContext);
     const location = useLocation();
 
-    const isActive = (path) => location.pathname === path;
+    // const isActive = (path) => location.pathname === path;
+    const isActive = (path) => location.pathname===path;
 
     return (
         <div className={`sidebar-wrapper ${sidebarOpen ? 'open' : 'closed'}`}>
