@@ -79,22 +79,19 @@ const SchoolAdminDashboard = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
-
   const closeSidebar = () => {
     setSidebarOpen(false);
   };
 
-  const components = [
-    <TableCard />, <Events />, <Form />
-  ]
+  const components = []
 
   if (profile) {
     return (
       <>
-        <Page sideBar={{ menuItems: menuItems, profile: {}, title: '' }} topBar={true} components={components} />
+        <Page sideBar={{ menuItems: menuItems, profile: {}, title: '' }} 
+              topBar={true} 
+              components={components} 
+        />
       </>
     );
   };
