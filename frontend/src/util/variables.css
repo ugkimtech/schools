@@ -18,7 +18,7 @@ imported in main.jsx
     --box-shadow: 3px 2px 5px rgba(0,0,0,0.1);
     --input-bg: #FFFFFF;
     --input-txt: #111827;
-    --input-border: #D1D5DB;
+    --input-border: 2px solid #D1D5DB;
     --hover-input: #3B82F6;
     --table-bg: #FFFFFF;
     --table-header: #F3F4F6;

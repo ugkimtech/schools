@@ -30,6 +30,7 @@ import PerformanceSummary from './components/PerformanceSummary';
 import Page from './components/Page';
 import Spiner from './components/Spiner';
 import Sidebar from './components/SideBar';
+import Form from './components/Form';
 
 
 const SchoolAdminDashboard = () => {
@@ -87,7 +88,7 @@ const SchoolAdminDashboard = () => {
   };
 
   const components = [
-    <TableCard />, <Events />
+    <TableCard />, <Events />, <Form />
   ]
 
   if (profile) {
