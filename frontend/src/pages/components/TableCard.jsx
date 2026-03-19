@@ -3,6 +3,11 @@ import "./assets/styles/TableCard.css"
 
 export default function TableCard({header={}, columns=[], data=[]}){
 
+    // Example:
+    // header={title:'Table', icon:<FaTable />, manage:true},
+    // columns=[{header:'Col 1', accessor:'one'}, {header:'Col 2', accessor:'two'}], 
+    // data=[{one:'Data 1', two:'Data 2'}, {one:'Data 3', two:'Data 4'}]
+
     return (
         <>
             <div className="dashboard-card">

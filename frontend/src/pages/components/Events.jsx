@@ -3,6 +3,11 @@ import "./assets/styles/Events.css";
 import { FaCalendarAlt } from "react-icons/fa";
 
 export default function Events({events=[]}){
+    
+    // Example:
+    // events=[{date:'DD/MM', item:'Event1'},
+    //          {date:'DD/MM', item:'Event2'}]
+                
     const [eventCount, setEventCount] = useState(0);
 
     useEffect(()=>{

@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 import { FaTimes, FaSignOutAlt } from "react-icons/fa";
 import "./assets/styles/SideBar.css";
 
-export default function Sidebar({ menuItems, schoolProfile, title, userProfile, sidebarOpen, onCloseSidebar }) {
+export default function Sidebar({ menuItems=[], schoolProfile, title, userProfile, sidebarOpen, onCloseSidebar }) {
     const { user, logout } = useContext(AuthContext);
     const location = useLocation();
 
@@ -15,15 +15,18 @@ export default function Sidebar({ menuItems, schoolProfile, title, userProfile, 
             <aside className="sidebar">
                 <nav className="sidebar-nav">
                     <div className="sidebar-header">
-                        <div className="school-logo">
-                            <div className="logo-icon">
-                                <img src={schoolProfile.badge} className='school-badge' alt='SchoolBadge' />
-                            </div>
-                            <div className="logo-text">
-                                <h2>{schoolProfile.school_name}</h2>
-                                <span>{title}</span>
-                            </div>
-                        </div>
+                        {
+                            schoolProfile ? 
+                            <div className="school-logo">
+                                <div className="logo-icon">
+                                    <img src={schoolProfile.badge} className='school-badge' alt='SchoolBadge' />
+                                </div>
+                                <div className="logo-text">
+                                    <h2>{schoolProfile.school_name}</h2>
+                                    <span>{title}</span>
+                                </div>
+                            </div> : ''
+                        }
                         <button className="close-sidebar" onClick={onCloseSidebar}>
                             <FaTimes />
                         </button>

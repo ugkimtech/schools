@@ -1,8 +1,11 @@
+import { useEffect, useState } from "react";
 import "./assets/styles/Page.css";
 import Sidebar from "./SideBar";
 import TopBar from "./TopBar";
 
-export default function Page({sideBar={}, topBar=true, children}){
+export default function Page({sideBar={}, topBar=true, components=[]}){
+    // sideBar={{menuItems:menuItems,profile:{},title:''}} 
+    // topBar={true} components={[<Component1 />,...]}
 
     const [sidebarOpen, setSidebarOpen] = useState(true);
     
@@ -42,17 +45,22 @@ export default function Page({sideBar={}, topBar=true, children}){
                 }
                 
                 <main className="main-content">
-                  <TopBar 
-                    onMenuToggle={toggleSidebar}
-                    sidebarOpen={sidebarOpen}
-                  />
-                  <StatCardsGrid />
-                  <TableCard />
-                  <Events />
-                  <PerformanceSummary />
+                    {
+                        topBar ? 
+                        <TopBar 
+                          onMenuToggle={toggleSidebar}
+                          sidebarOpen={sidebarOpen}
+                        /> : ''
+                    }
+
+                    {
+                        components ? 
+                        components.map((component, index) => (
+                            <div className="component" key={index}>{component}</div>
+                        )):''
+                    }
                 </main>
         
-                {/* Overlay for mobile */}
                 {sidebarOpen && window.innerWidth < 600 && (
                   <div className="sidebar-overlay" onClick={closeSidebar}></div>
                 )}
