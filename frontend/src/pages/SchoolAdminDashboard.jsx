@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect, Children } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import APICall from '../api/api';
-
 import {
   FaUsers,
   FaBookOpen,
@@ -16,27 +15,32 @@ import {
   FaLayerGroup,
   FaCalendarCheck,
   FaUserCircle,
-  FaSpider,
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './assets/styles/SchoolAdminDashboard.css';
 import { AuthContext } from '../contexts/AuthContext';
-import SideBar from './components/SideBar';
-import TopBar from './components/TopBar';
-import StatCardsGrid from './components/StatCardsGrid';
-import TableCard from './components/TableCard';
-import Events from './components/Events';
-import PerformanceSummary from './components/PerformanceSummary';
 import Page from './components/Page';
-import Spiner from './components/Spiner';
-import Sidebar from './components/SideBar';
-import Form from './components/Form';
+import StatCardsGrid from './components/StatCardsGrid';
+import Form from "./components/Form";
 
 
-const SchoolAdminDashboard = () => {
+export default function SchoolAdminDashboard() {
   const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
+  const [students, setStudents] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate('/login');
+    const api = new APICall();
+
+    const getSchoolProfile = async () => {
+      const school = await api.get('school/my-school/');
+      setProfile(school[0]);
+    }
+
+    getSchoolProfile();
+  }, []);
 
   const menuItems = [
     { label: 'Dashboard', icon: <FaHome />, path: '/school' },
@@ -55,40 +59,18 @@ const SchoolAdminDashboard = () => {
     { label: 'Settings', icon: <FaCog />, path: '#' },
   ]
 
-  useEffect(() => {
-    if (!user) navigate('/login');
-    const api = new APICall();
-    const getSchoolProfile = async () => {
-      const school = await api.get('school/my-school/');
-      setProfile(school[0]);
-    }
-    getSchoolProfile();
-  }, []);
+  const statData = [
+  ]
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-
-  // Handle resize events
-  useEffect(() => {
-    const handleResize = () => {
-      const isDesktop = window.innerWidth >= 600;
-      setSidebarOpen(isDesktop);
-    };
-
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-  };
-
-  const components = []
+  const components = [
+  ]
 
   if (profile) {
     return (
       <>
-        <Page sideBar={{ menuItems: menuItems, profile: {}, title: '' }} 
+        <Page sideBar={{ menuItems: menuItems, 
+                          profile: profile, 
+                          title: 'Admin' }} 
               topBar={true} 
               components={components} 
         />
@@ -96,5 +78,3 @@ const SchoolAdminDashboard = () => {
     );
   };
 }
-
-export default SchoolAdminDashboard;

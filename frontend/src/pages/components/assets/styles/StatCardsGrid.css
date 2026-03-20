@@ -81,3 +81,7 @@
 .stat-change.warning {
   color: var(--warning);
 }
+
+.stat-change.danger {
+  color: var(--error);
+}
