@@ -4,17 +4,19 @@ const sun = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" vie
 export function toggleTheme(){
     const theme = document.documentElement.getAttribute("data-theme");
     const themeBtn = document.getElementById('theme-btn');
-    const rootStyles = getComputedStyle(document.documentElement);
-    const bgColor = rootStyles.getPropertyValue('--bg').trim();
 
     if(theme === 'dark'){
         document.documentElement.setAttribute('data-theme', 'light');
-        document.querySelector('meta[name=theme-color]').setAttribute('content', bgColor);
         themeBtn.innerHTML = moon
+        const rootStyles = getComputedStyle(document.documentElement);
+        const bgColor = rootStyles.getPropertyValue('--bg').trim();
+        document.querySelector('meta[name=theme-color]').setAttribute('content', bgColor);
     }else {
         document.documentElement.setAttribute('data-theme', 'dark');
-        document.querySelector('meta[name=theme-color]').setAttribute('content', bgColor);
         themeBtn.innerHTML = sun
+        const rootStyles = getComputedStyle(document.documentElement);
+        const bgColor = rootStyles.getPropertyValue('--bg').trim();
+        document.querySelector('meta[name=theme-color]').setAttribute('content', bgColor);
     }
 }
 
