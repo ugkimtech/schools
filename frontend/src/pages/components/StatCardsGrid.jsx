@@ -2,6 +2,7 @@ import "./assets/styles/StatCardsGrid.css"
 
 export default function StatCardsGrid({data=[]}){
     // state = {positive, warning, & change}
+    // data = [{icon:<icon>, title:'title',value:'value',state:'state'}]
 
     return (
         <>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./assets/styles/Form.css"
 import Spiner from "./Spiner";
+import APICall from "../../api/api";
 
 
-export default function Form({form}){
+export default function Form({form, onSubmit}){
     // Example
     // form={
     //     title:'D-Form', fields:[
@@ -19,10 +20,9 @@ export default function Form({form}){
     // }
 
     const [spin, setSpin] = useState(false);
-    const [formData, setFormData] = useState(null);
     const [error, setError] = useState('');
 
-    const getData = (e) => {
+    const getData = async (e) => {
         setSpin(true);
         e.preventDefault();
 
@@ -37,9 +37,9 @@ export default function Form({form}){
                 }
             }else {
                 data.append(element.name, element.value);
-            }
+            } 
         });
-        setFormData(data);
+        onSubmit(data);
         setSpin(false);
     }
 
@@ -80,7 +80,7 @@ export default function Form({form}){
                                             required={field.required} />
                                 </>:
                                 <>
-                                <label>{field.label}</label>
+                                    <label>{field.label}</label>
                                     <input type={field.type} 
                                             name={field.name} 
                                             placeholder={field.placeholder}

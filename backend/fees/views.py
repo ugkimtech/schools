@@ -16,12 +16,12 @@ class CreateFeeItem(ModelViewSet):
 class StudentPayments(ModelViewSet):
     serializer_class = PaymentSerializer
     permission_classes = [IsSchooolAdmin | IsStaffMember | IsStudent]
-    http_method_names = ['post',' get', 'put', 'patch' 'delete']
+    http_method_names = ['post', 'get', 'put', 'patch' 'delete']
     
     def initial(self, request, *args, **kwargs):
         if request.user.groups.filter(name='student').exists():
             self.http_method_names = ['get']
-            super().initial(request, *args, **kwargs)
+        super().initial(request, *args, **kwargs)
     
     def get_queryset(self):
         user = self.request.user

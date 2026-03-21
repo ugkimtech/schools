@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import SchoolAccount from "../pages/SchoolAccount";
 import SchoolAdminDashboard from "../pages/SchoolAdminDashboard";
 import AdmitStudent from "../pages/AdmitStudent";
+import NewDepartment from "../pages/CreateDepartment";
 
 
 function PrivateRoute({children}){
@@ -23,7 +24,8 @@ export default function AppRoutes(){
             <Route path="/school" 
                 element={<PrivateRoute> <SchoolAdminDashboard /> </PrivateRoute>} 
             />
-            <Route path="/admit" element={<PrivateRoute> <AdmitStudent /></PrivateRoute>} />
+            <Route path="/newdepartment" element={<PrivateRoute> <NewDepartment /></PrivateRoute>} />
+            {/* <Route path="/admit" element={<PrivateRoute> <AdmitStudent /></PrivateRoute>} /> */}
         </Routes>
         </BrowserRouter>
     )

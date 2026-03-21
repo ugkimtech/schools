@@ -27,11 +27,15 @@ urlpatterns = [
     path('user/', include('users.urls')),
     path('super-admin/', include('super_admin.urls')),
     path('school/', include('school.urls')),
+    path('departments/', include('departments.urls')),
     path('staff/', include('staff.urls')),
+    path('classes/', include('classes.urls')),
     path('student/', include('student.urls')),
     path('fees/', include('fees.urls')),
     path('academics/', include('academics.urls')),
     path('library/', include('library.urls')),
+    path('attendence/', include('attendence.urls')),
+    path('events/', include('events.urls')),
 ]
 
 if settings.DEBUG:

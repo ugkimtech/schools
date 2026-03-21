@@ -4,6 +4,7 @@
     border-radius: 20px;
     padding: 24px;
     box-shadow: 0 4px 8px var(--shadow);
+    max-width: 410px;
   }
   
   @media (max-width: 768px) {

@@ -1,13 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
-from .serializers import ClassSerializer
-# from users.permissions import IsSchooolAdmin, IsStaffMember, IsStudent
-from .models import Classes
+from .serializers import EventsSerializer
 from school.models import SchoolProfile
+from .models import Events
 from staff.models import Staff
 
-class ManageClasses(ModelViewSet):
-    serializer_class = ClassSerializer
-    # permission_classes = [IsSchooolAdmin, IsStaffMember, IsStudent]
+
+class ManageEvents(ModelViewSet):
+    serializer_class = EventsSerializer
     
     def get_queryset(self):
         user = self.request.user
@@ -15,8 +14,8 @@ class ManageClasses(ModelViewSet):
             'teacher', 'burser', 'headteacher', 'secretary', 'other_staff']
         if user.groups.filter(name='school').exists():
             school = SchoolProfile.objects.get(school_admin=user)
-            return Classes.objects.filter(school=school)
+            return Events.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
             school = Staff.objects.get(staff_user=user).school
-            return Classes.objects.filter(school=school)
-        return Classes.objects.filter(school=school)
+            return Events.objects.filter(school=school)
+        return Events.objects.filter(school=school)

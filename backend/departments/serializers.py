@@ -1,0 +1,26 @@
+from rest_framework import serializers
+from .models import Department, SchoolProfile
+from django.contrib.auth import get_user_model
+User= get_user_model()
+
+
+class DepartmentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = ['dep_name', 'dep_head']
+    
+    def create(self, validated_data):
+        print(validated_data)
+        try:
+            school_admin = self.context['request'].user
+            school = SchoolProfile.objects.get(school_admin=school_admin)
+        except SchoolProfile.DoesNotExist:
+            raise serializers.ValidationError(
+                    {'school_profile':'Not a school admin, please login as a school admin to continue.'}
+                )
+            
+        try:
+            department = Department.objects.create(school=school, **validated_data)
+            return department
+        except:
+            raise serializers.ValidationError({'dept_error':'Error while creating a department, try again'})

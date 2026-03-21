@@ -8,6 +8,9 @@ class APICall {
         try{
             const response = await fetch(`${BASE_URL + endPoint}`, { 
                 method: 'POST',
+                headers:{
+                    "Authorization":`Bearer ${localStorage.getItem('access')}`
+                },
                 body: data
             });
 
@@ -48,7 +51,8 @@ class APICall {
             if(response.ok){
                 const data = await response.json();
                 return data;
-            }else{
+            }else if(response.status===404){
+                console.log(`not found @ ${endPoint.split('/')[1]}`);
                 return null;
             }
         }catch(e){

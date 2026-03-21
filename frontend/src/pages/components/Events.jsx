@@ -5,8 +5,8 @@ import { FaCalendarAlt } from "react-icons/fa";
 export default function Events({events=[]}){
     
     // Example:
-    // events=[{date:'DD/MM', item:'Event1'},
-    //          {date:'DD/MM', item:'Event2'}]
+    // events=[{date:'DD/MM', item:'Event1', details:'details'},
+    //          {date:'DD/MM', item:'Event2', details:'details'}]
                 
     const [eventCount, setEventCount] = useState(0);
 
@@ -27,19 +27,21 @@ export default function Events({events=[]}){
                     <span className="event-count">{eventCount}</span>
                 </div>
 
+                {eventCount===0?'No Events':''}
+
                 {
                     events ?
                     <div className="events-mini-list"> 
                         {
-                            events.map((item, index) => (
+                            events.map((event, index) => (
                                 <div key={index} className="mini-event">
                                     <div className="event-date-mini">
-                                        <span className="day">{item.date.split('/')[0]}</span>
-                                        <span className="month">{item.date.split('/')[1]}</span>
+                                        <span className="day">{event.date.split('/')[0]}</span>
+                                        <span className="month">{event.date.split('/')[1]}</span>
                                     </div>
                                     <div className="event-info">
-                                        <div className="event-title">{item.item}</div>
-                                        <div className="event-details">{item.details}</div>
+                                        <div className="event-title">{event.item}</div>
+                                        <div className="event-details">{event.details}</div>
                                     </div>
                                 </div>
                             ))
