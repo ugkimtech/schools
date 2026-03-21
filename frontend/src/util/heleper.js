@@ -4,6 +4,11 @@ const sun = '<svg stroke="currentColor" fill="currentColor" stroke-width="0" vie
 export function toggleTheme(){
     const theme = document.documentElement.getAttribute("data-theme");
     const themeBtn = document.getElementById('theme-btn');
+    const rootStyles = getComputedStyle(document.documentElement);
+    const bgColor = rootStyles.getPropertyValue('--bg').trim();
+    document.querySelector('meta[name=theme-color]').setAttribute('content', bgColor);
+    console.log(document.querySelector('meta[name=theme-color]'))
+
     if(theme === 'dark'){
         document.documentElement.setAttribute('data-theme', 'light');
         themeBtn.innerHTML = moon
