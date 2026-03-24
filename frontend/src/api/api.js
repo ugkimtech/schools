@@ -52,11 +52,10 @@ class APICall {
                 const data = await response.json();
                 return data;
             }else if(response.status===404){
-                console.log(`not found @ ${endPoint.split('/')[1]}`);
                 return null;
             }
         }catch(e){
-            console.log(e)
+            // console.log(e)
             return null;
         }
     }

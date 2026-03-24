@@ -32,7 +32,9 @@ export default function TableCard({header={}, columns=[], data=[]}){
                                     <tr key={index}>
                                         {
                                             columns.map((col, colIndex)=> (
-                                                <td key={colIndex}>{row[col.accessor]}</td>
+                                                <td key={colIndex}>
+                                                    {row[col.accessor]?row[col.accessor]:'N/A'}
+                                                </td>
                                             ))
                                         }
                                     </tr>

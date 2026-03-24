@@ -29,6 +29,7 @@ import Events from './components/Events.jsx';
 
 
 export default function SchoolAdminDashboard() {
+
   const { user } = useContext(AuthContext);
   const [profile, setProfile] = useState(null);
   const [departments, setDepartments] = useState(null);
@@ -47,10 +48,6 @@ export default function SchoolAdminDashboard() {
   
   const api = new APICall();
 
-  // const createDepartment = async (data) => {
-  //   const response = await api.create('departments/manage-departments/', data)
-  //   if(response != 201) alert(response);
-  // }
 
   // const createStudent = async (data) => {
   //   const response = await api.create('students/manage-students/', data)
@@ -184,7 +181,7 @@ export default function SchoolAdminDashboard() {
     { label: 'Dashboard', icon: <FaHome />, path: '/school' },
     { label: 'Students', icon: <FaUserGraduate />, path: '#' },
     { label: 'Staff', icon: <FaUsers />, path: '#' },
-    { label: 'Departments', icon: <FaLayerGroup />, path: '#' },
+    { label: 'Departments', icon: <FaLayerGroup />, path: '/departments' },
     { label: 'Classes', icon: <FaBookOpen />, path: '#' },
     { label: 'Timetable', icon: <FaClipboardList />, path: '#' },
     { label: 'Examinations', icon: <FaMedal />, path: '#' },

@@ -7,7 +7,7 @@ User= get_user_model()
 class DepartmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ['dep_name', 'dep_head']
+        fields = ['id', 'dep_name', 'dep_head']
     
     def create(self, validated_data):
         print(validated_data)
