@@ -149,7 +149,7 @@ export default function SchoolAccount(){
 
                 <button type="submit">Create</button>
             </form>
-            <p className="setup">Do you have an Account? <Link to="/login">Click here to Login</Link></p>
+            <p className="setup">Do you have an Account? <Link to="/">Click here to Login</Link></p>
             {spin ? <Spiner state={'start'} /> : ''}
         </div>
     );
