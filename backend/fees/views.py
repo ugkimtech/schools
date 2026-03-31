@@ -32,7 +32,7 @@ class StudentPayments(ModelViewSet):
             student = StudentProfile.objects.get(student_user=user)
             return Payment.objects.filter(student=student)
         else:
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return Payment.objects.filter(school=school)
         
     '''def get_queryset(self):
@@ -43,7 +43,7 @@ class StudentPayments(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Payment.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return Payment.objects.filter(school=school)
         self.http_method_names = ['get']
         student = StudentProfile.objects.get(student_user=user)

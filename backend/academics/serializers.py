@@ -16,7 +16,7 @@ class TermSerializer(serializers.ModelSerializer):
             term = Term.objects.create(school=school, **validated_data)
             return term
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             term = Term.objects.create(school=staff.school, **validated_data)
             return term
             
@@ -34,7 +34,7 @@ class SubjectSerializer(serializers.ModelSerializer):
             subject = Subject.objects.create(school=school, **validated_data)
             return subject
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             subject = Subject.objects.create(school=staff.school, **validated_data)
             return subject
 
@@ -51,7 +51,7 @@ class ExamSerializer(serializers.ModelSerializer):
             exam = Exam.objects.create(school=school, **validated_data)
             return exam
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             exam = Exam.objects.create(school=staff.school, **validated_data)
             return exam
 
@@ -68,6 +68,6 @@ class ResultsSerializer(serializers.ModelSerializer):
             resuls = Results.objects.create(school=school, **validated_data)
             return resuls
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             resuls = Results.objects.create(school=staff.school, **validated_data)
             return resuls

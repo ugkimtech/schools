@@ -16,7 +16,7 @@ class BookSerializer(serializers.ModelSerializer):
             book = Book.objects.create(school=school, **validated_data)
             return book
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             book = Book.objects.create(school=staff.school, **validated_data)
             return book
 
@@ -33,7 +33,7 @@ class BookCopySerializer(serializers.ModelSerializer):
             copy = BookCopy.objects.create(school=school, **validated_data)
             return copy
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             copy = BookCopy.objects.create(school=staff.school, **validated_data)
             return copy
         
@@ -50,6 +50,6 @@ class BookBorrowingSerializer(serializers.ModelSerializer):
             borrow = BookBorrowing.objects.create(school=school, **validated_data)
             return borrow
         else:
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             borrow = BookBorrowing.objects.create(school=staff.school, **validated_data)
             return borrow

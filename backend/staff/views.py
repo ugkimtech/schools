@@ -1,5 +1,6 @@
 from rest_framework.generics import CreateAPIView
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.parsers import MultiPartParser, FormParser
 from users.permissions import IsSchooolAdmin, IsStaffMember
 from .serializers import StaffSerializer, ManageStaffSerializer
 from .models import Staff
@@ -10,6 +11,7 @@ class CreateStaff(CreateAPIView):
     queryset = Staff.objects.all()
     serializer_class = StaffSerializer
     permission_classes = [IsSchooolAdmin]
+    parser_classes = [MultiPartParser, FormParser]
     
 
 class ManageStaff(ModelViewSet):
@@ -22,4 +24,4 @@ class ManageStaff(ModelViewSet):
         if user.groups.filter(name='school').exists():
             school = SchoolProfile.objects.get(school_admin=user)
             return Staff.objects.filter(school=school)
-        return Staff.objects.filter(staff_user=user)
+        return Staff.objects.filter(user=user)

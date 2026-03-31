@@ -16,7 +16,7 @@ class Terms(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Term.objects.filter(school=school)
         else:
-            staff = Staff.objects.filter(staff_user=user)
+            staff = Staff.objects.filter(user=user)
             return Term.objects.filter(school=staff.school)
 
 
@@ -30,7 +30,7 @@ class Exams(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Exam.objects.filter(school=school)
         else:
-            staff = Staff.objects.filter(staff_user=user)
+            staff = Staff.objects.filter(user=user)
             return Exam.objects.filter(school=staff.school)
 
 
@@ -44,7 +44,7 @@ class Subjects(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Subject.objects.filter(school=school)
         else:
-            staff = Staff.objects.filter(staff_user=user)
+            staff = Staff.objects.filter(user=user)
             return Subject.objects.filter(school=staff.school)
 
 
@@ -65,6 +65,6 @@ class StudentResults(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Results.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            staff = Staff.objects.filter(staff_user=user)
+            staff = Staff.objects.filter(user=user)
             return Results.objects.filter(school=staff.school)
         return Results.objects.filter(student_user=user)

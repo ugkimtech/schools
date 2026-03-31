@@ -31,7 +31,7 @@ class IsStaffMember(BasePermission):
         is_school_active = False
         if is_staff:
             user = User.objects.get(username=user.username)
-            staff = Staff.objects.get(staff_user=user)
+            staff = Staff.objects.get(user=user)
             is_school_active = staff.school.school_admin.is_active
         return bool(
                     user and user.is_authenticated and user.is_active

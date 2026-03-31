@@ -30,6 +30,6 @@ class ManageStudent(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return StudentProfile.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return StudentProfile.objects.filter(school=school)
         return StudentProfile.objects.filter(student_user=user)

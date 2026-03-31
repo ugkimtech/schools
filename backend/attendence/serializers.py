@@ -17,7 +17,7 @@ class StudentAttendenceSerializer(serializers.ModelSerializer):
             school = SchoolProfile.objects.get(school_admin=school_admin)
         except SchoolProfile.DoesNotExist:
             teacher = self.context['request'].user
-            school = Staff.objects.get(staff_user=teacher).school
+            school = Staff.objects.get(user=teacher).school
         except:
             raise serializers.ValidationError(
                     {'error':'School Not found!.'}
@@ -43,7 +43,7 @@ class StaffAttendenceSerializer(serializers.ModelSerializer):
             school = SchoolProfile.objects.get(school_admin=school_admin)
         except SchoolProfile.DoesNotExist:
             teacher = self.context['request'].user
-            school = Staff.objects.get(staff_user=teacher).school
+            school = Staff.objects.get(user=teacher).school
         except:
             raise serializers.ValidationError(
                     {'error':'School Not found!.'}

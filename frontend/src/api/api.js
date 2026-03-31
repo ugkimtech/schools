@@ -9,7 +9,7 @@ class APICall {
             const response = await fetch(`${BASE_URL + endPoint}`, { 
                 method: 'POST',
                 headers:{
-                    "Authorization":`Bearer ${localStorage.getItem('access')}`
+                    "Authorization":`Bearer ${localStorage.getItem('access')}`,
                 },
                 body: data
             });
@@ -23,9 +23,11 @@ class APICall {
                 case 400:{
                     const res = await response.json();
                     if(res.email){
+                        console.log(res)
                         return `${res.email}`;
                     }else if(res.username){
-                        return `${res.username}`;;
+                        console.log(res)
+                        return `${res.username}`;
                     }else {
                         return `${response.status +':'+ res[0]}`;
                     }

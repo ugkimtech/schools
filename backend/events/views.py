@@ -16,6 +16,6 @@ class ManageEvents(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return Events.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return Events.objects.filter(school=school)
         return Events.objects.filter(school=school)

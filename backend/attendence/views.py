@@ -15,7 +15,7 @@ class StudentAttendenceView(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return StudentAttendence.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return StudentAttendence.objects.filter(school=school)
         return StudentAttendence.objects.filter(school=school)
 
@@ -30,5 +30,5 @@ class StaffAttendenceView(ModelViewSet):
             school = SchoolProfile.objects.get(school_admin=user)
             return StaffAttendence.objects.filter(school=school)
         elif user.groups.filter(name__in=staff_groups).exists():
-            school = Staff.objects.get(staff_user=user).school
+            school = Staff.objects.get(user=user).school
             return StaffAttendence.objects.filter(school=school)

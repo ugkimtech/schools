@@ -33,7 +33,11 @@ export default function TableCard({header={}, columns=[], data=[]}){
                                         {
                                             columns.map((col, colIndex)=> (
                                                 <td key={colIndex}>
-                                                    {row[col.accessor]?row[col.accessor]:'N/A'}
+                                                    {
+                                                        col.accessor === 'photo'?
+                                                        <img src={row[col.accessor]} alt="photo"/>:
+                                                        row[col.accessor]?row[col.accessor]:'N/A'
+                                                    }
                                                 </td>
                                             ))
                                         }

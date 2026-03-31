@@ -26,20 +26,36 @@ export default function Form({form, onSubmit}){
         setSpin(true);
         e.preventDefault();
 
-        const form = e.target;
-        const elements = form.querySelectorAll("input");
+        const formEl = e.target;
         const data = new FormData();
+        const elements = formEl.querySelectorAll("input, select");
         elements.forEach(element => {
             if(!element.name) return;
             if(element.type === 'file'){
                 if(element.files.length > 0){
                     data.append(element.name, element.files[0]);
                 }
-            }else {
-                data.append(element.name, element.value);
+            }else if(element.type === 'checkbox'){
+                if(element.checked){
+                    data.append(element.name, element.value);
+                }
+            }else if(element.type === 'radio'){
+                if(element.checked){
+                    data.append(element.name, element.value);
+                }
+            }
+            else {
+                if(element.value != ""){
+                    data.append(element.name, element.value);
+                }
             } 
         });
-        onSubmit(data);
+
+        for(let pair of data.entries()){
+            console.log(pair[0], pair[1]);
+        }
+
+        await onSubmit(data);
         setSpin(false);
     }
 
@@ -47,7 +63,7 @@ export default function Form({form, onSubmit}){
         <div className="form-card">
             <h1>{form.title}</h1>
             {error && <p>{error}</p>}
-            <form onSubmit={getData} encType="multipart/form-data" className="form">
+            <form onSubmit={getData} className="form">
                 {
                     form.fields.map((field, index) => (
                         <div key={index} className="form-item">
@@ -56,10 +72,13 @@ export default function Form({form, onSubmit}){
                                 <>
                                     <label>{field.label}</label>
                                     <select name={field.name} required={field.required}>
+                                        <option value={''}>-select-</option>
                                         {field.options.map((option, index) => (
-                                            <option key={index} 
-                                                    value={option.value}
-                                            >{option.option}</option>
+                                            option.option != 'super_admin' ? 
+                                                <option key={index} 
+                                                        value={option.value}>
+                                                            {option.option}
+                                                </option>:''
                                         ))}
                                     </select>
                                 </>:
@@ -77,6 +96,13 @@ export default function Form({form, onSubmit}){
                                     <input type={field.type} 
                                             checked={field.checked} 
                                             onChange={(e)=> console.log(e.target.checked)} 
+                                            required={field.required} />
+                                </>:
+                                field.field === 'file' ?
+                                <>
+                                    <label>{field.label}</label>
+                                    <input type={'file'} 
+                                            name={field.name} 
                                             required={field.required} />
                                 </>:
                                 <>

@@ -74,11 +74,11 @@
     border-bottom: var(--border);
   }
   
-  .department-table td {
+  /* .department-table td {
     padding: 12px 8px;
     border-bottom: var(--border);
     color: var(--table-txt);
-  }
+  } */
 
   .table-responsive {
     overflow-x: auto;
@@ -114,6 +114,10 @@
     color: var(--table-txt);
   }
   
+  .department-table td img{
+    width: 50px;
+    height: auto;
+  }
   .dept-name {
     font-weight: 600;
     color: var(--text1);
