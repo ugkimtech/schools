@@ -15,7 +15,7 @@ import {
     FaUserCircle,
 } from 'react-icons/fa';
 
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import "./assets/styles/Layout.css";
 import Sidebar from '../components/SideBar.jsx';
@@ -25,6 +25,7 @@ import APICall from '../../api/api.js';
 export default function Layout() {
     const [profile, setProfile] = useState(null);
     const [sidebarOpen, setSidebarOpen] = useState(true);
+    const navigate = useNavigate();
 
     const api = new APICall();
 
@@ -38,6 +39,7 @@ export default function Layout() {
     }
 
     useEffect(() => {
+        navigate('#');
         getSchoolProfile();
 
         const handleResize = () => {

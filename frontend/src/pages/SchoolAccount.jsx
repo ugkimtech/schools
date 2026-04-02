@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import APICall from "../api/api";
@@ -11,6 +11,10 @@ export default function SchoolAccount(){
     const navigate = useNavigate();
     const [error, setError] = useState(null);
     const [spin, setSpin] = useState(false);
+
+    useEffect(()=>{
+        navigate('#')
+    },[]);
 
     const create = async (e)=>{
         setSpin(true);
