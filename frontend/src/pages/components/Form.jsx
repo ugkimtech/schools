@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./assets/styles/Form.css"
 import Spiner from "./Spiner";
 import APICall from "../../api/api";
+import { FaPlusCircle, FaRegTimesCircle, FaTimesCircle } from "react-icons/fa";
 
 
 export default function Form({form, onSubmit}){
@@ -21,6 +22,9 @@ export default function Form({form, onSubmit}){
 
     const [spin, setSpin] = useState(false);
     const [error, setError] = useState('');
+    const [toggleForm, setToggleForm] = useState('on');
+    
+    const formToggle = () => toggleForm === 'on' ? setToggleForm('off'): setToggleForm('on');
 
     const getData = async (e) => {
         setSpin(true);
@@ -60,67 +64,70 @@ export default function Form({form, onSubmit}){
     }
 
     if(form) return (
-        <div className="form-card">
-            <h1>{form.title}</h1>
-            {error && <p>{error}</p>}
-            <form onSubmit={getData} className="form">
-                {
-                    form.fields.map((field, index) => (
-                        <div key={index} className="form-item">
-                            {
-                                field.field === 'dropdown' ?
-                                <>
-                                    <label>{field.label}</label>
-                                    <select name={field.name} required={field.required}>
-                                        <option value={''}>-select-</option>
-                                        {field.options.map((option, index) => (
-                                            option.option != 'super_admin' ? 
-                                                <option key={index} 
-                                                        value={option.value}>
-                                                            {option.option}
-                                                </option>:''
-                                        ))}
-                                    </select>
-                                </>:
-                                field.field === 'radio' ?
-                                <>
-                                    <label>{field.label}</label>
-                                    <input type="radio" 
-                                            name={field.name} 
-                                            value={field.value} 
-                                            required={field.required} />
-                                </>:
-                                field.field === 'checkbox' ?
-                                <>
-                                    <label>{field.label}</label>
-                                    <input type={field.type} 
-                                            checked={field.checked} 
-                                            onChange={(e)=> console.log(e.target.checked)} 
-                                            required={field.required} />
-                                </>:
-                                field.field === 'file' ?
-                                <>
-                                    <label>{field.label}</label>
-                                    <input type={'file'} 
-                                            name={field.name} 
-                                            required={field.required} />
-                                </>:
-                                <>
-                                    <label>{field.label}</label>
-                                    <input type={field.type} 
-                                            name={field.name} 
-                                            placeholder={field.placeholder}
-                                            required={field.required} />
-                                </>
-                            }
-                        </div>
-                    ))
-                }
-                <div className="form-item">
-                <button type="submit">{form.button.text}</button>
-                </div>
-            </form>
-            {spin ? <Spiner state={'start'} />:''}
+        <div className={`form-main ${toggleForm}`}>
+            <div className="form-card">
+                <h1>{form.title}</h1>
+                <button className={`formToggle-btn`} onClick={formToggle}><FaTimesCircle /> Close</button>
+                {error && <p>{error}</p>}
+                <form onSubmit={getData} className="form">
+                    {
+                        form.fields.map((field, index) => (
+                            <div key={index} className="form-item">
+                                {
+                                    field.field === 'dropdown' ?
+                                    <>
+                                        <label>{field.label}</label>
+                                        <select name={field.name} required={field.required}>
+                                            <option value={''}>-select-</option>
+                                            {field.options.map((option, index) => (
+                                                option.option != 'super_admin' ? 
+                                                    <option key={index} 
+                                                            value={option.value}>
+                                                                {option.option}
+                                                    </option>:''
+                                            ))}
+                                        </select>
+                                    </>:
+                                    field.field === 'radio' ?
+                                    <>
+                                        <label>{field.label}</label>
+                                        <input type="radio" 
+                                                name={field.name} 
+                                                value={field.value} 
+                                                required={field.required} />
+                                    </>:
+                                    field.field === 'checkbox' ?
+                                    <>
+                                        <label>{field.label}</label>
+                                        <input type={field.type} 
+                                                checked={field.checked} 
+                                                onChange={(e)=> console.log(e.target.checked)} 
+                                                required={field.required} />
+                                    </>:
+                                    field.field === 'file' ?
+                                    <>
+                                        <label>{field.label}</label>
+                                        <input type={'file'} 
+                                                name={field.name} 
+                                                required={field.required} />
+                                    </>:
+                                    <>
+                                        <label>{field.label}</label>
+                                        <input type={field.type} 
+                                                name={field.name} 
+                                                placeholder={field.placeholder}
+                                                required={field.required} />
+                                    </>
+                                }
+                            </div>
+                        ))
+                    }
+                    <div className="form-item">
+                    <button type="submit">{form.button.text}</button>
+                    </div>
+                </form>
+                {spin ? <Spiner state={'start'} />:''}
+            </div>
         </div>
     );
 }

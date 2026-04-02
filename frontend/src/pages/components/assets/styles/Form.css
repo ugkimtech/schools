@@ -1,3 +1,32 @@
+.form-main.on {
+    min-width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    pointer-events: auto;
+    background-color: var(--bg);
+}
+
+.form-main.on * {
+    pointer-events: auto;
+    scroll-behavior: smooth;
+}
+
+.form-main.off {
+    display: none;
+}
+
+.formToggle-btn{
+    color: red;
+    border: none;
+    background-color: var(--bg);
+    position: absolute;
+    top: 2%;
+    right: 2%;
+}
+
 .form-card{
     border: var(--border);
     display: flex;

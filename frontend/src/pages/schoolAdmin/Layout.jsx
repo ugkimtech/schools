@@ -39,7 +39,6 @@ export default function Layout() {
     }
 
     useEffect(() => {
-        navigate('#');
         getSchoolProfile();
 
         const handleResize = () => {
@@ -93,7 +92,9 @@ export default function Layout() {
                     sidebarOpen={sidebarOpen}
                 />
 
-                <Outlet />
+                <div className='outlet'>
+                    <Outlet />
+                </div>
 
             </main>
 
