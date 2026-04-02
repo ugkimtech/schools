@@ -46,3 +46,9 @@
 .component {
     margin: 10px;
 }
+
+.outlet{
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+}
