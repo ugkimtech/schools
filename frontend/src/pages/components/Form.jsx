@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./assets/styles/Form.css"
 import Spiner from "./Spiner";
-import APICall from "../../api/api";
-import { FaPlusCircle, FaRegTimesCircle, FaTimesCircle } from "react-icons/fa";
+import { FaAngleUp, FaTimesCircle } from "react-icons/fa";
+import { FaAngleDown, FaTurnDown } from "react-icons/fa6";
 
 
 export default function Form({form, onSubmit}){
@@ -23,8 +23,23 @@ export default function Form({form, onSubmit}){
     const [spin, setSpin] = useState(false);
     const [error, setError] = useState('');
     const [toggleForm, setToggleForm] = useState('on');
+    const [clicked, setClicked] = useState(false);
     
     const formToggle = () => toggleForm === 'on' ? setToggleForm('off'): setToggleForm('on');
+
+    const checkClick =()=>{
+        setClicked(!clicked);
+    };
+
+    let departments = [];
+    const addDepartment = (e)=> {
+        var option = e.target;
+        if(option.checked){
+            departments.push(option.value);
+        }else {
+            departments.splice(departments.indexOf(e.target.value),1);
+        }
+    }
 
     const getData = async (e) => {
         setSpin(true);
@@ -96,14 +111,28 @@ export default function Form({form, onSubmit}){
                                                 value={field.value} 
                                                 required={field.required} />
                                     </>:
-                                    field.field === 'checkbox' ?
-                                    <>
-                                        <label>{field.label}</label>
-                                        <input type={field.type} 
-                                                checked={field.checked} 
-                                                onChange={(e)=> console.log(e.target.checked)} 
-                                                required={field.required} />
+
+                                    field.field === 'checkbox' ?<>
+                                    <div className={`check-parent ${clicked?'on':'off'}`}>
+                                        <label> {field.label} </label>
+                                        <button type="button" onClick={checkClick} className="select">{clicked? <FaAngleUp className="check-ico" /> : <FaAngleDown className="check-ico" /> } </button>
+                                        {
+                                            field.options.map((option, ind)=>(
+                                                <div key={ind} className={`check-items ${clicked?'on':'off'}`}>
+                                                    <input type='checkbox'
+                                                        name={option.name}
+                                                        value={option.value}
+                                                        checked={option.checked} 
+                                                        onChange={(e)=> addDepartment(e)} 
+                                                        required={option.required} />
+
+                                                    <span>{option.text}</span>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
                                     </>:
+
                                     field.field === 'file' ?
                                     <>
                                         <label>{field.label}</label>

@@ -6,10 +6,7 @@ export default function useGroups(){
     const [groups, setGroups] = useState([]);
     useEffect(()=>{
         api.get('user/groups').then(setGroups);
-    }, []);
+    }, [])
 
-useEffect(()=>{
-    console.log(groups)
-})
     return groups;
 }

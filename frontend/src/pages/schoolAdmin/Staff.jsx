@@ -84,9 +84,13 @@ export default function Staff(){
                         {field:'input', label:'District Of Origin', type:'text', name:'district', placeholder:'District of Origin'},
                         {field:'input', label:'Emergence Contact Person', type:'text', name:'emergence_contact_name', placeholder:'His/Her Name'},
                         {field:'input', label:'Emergence Contact Phone', type:'text', name:'emergence_phone', placeholder:'e.g: 0712345678'},
-                        {field:'dropdown', label:'Department', name:'departments', options:departments.map((department)=>(
-                            {value:department.id, option:department.dep_name}
+
+
+                        {field:'checkbox', label:'Department', name:'departments', options:departments.map((department)=>(
+                            {name:'departments', value:department.id, text:department.dep_name}
                         ))},
+
+
                         {field:'dropdown', label:'Employment Type', name:'employment_type', options:[
                             {value:'PART_TIME', option:'Part Time'},
                             {value:'FULL_TIME', option:'Full Time'},
