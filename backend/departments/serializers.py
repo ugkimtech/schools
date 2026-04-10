@@ -8,6 +8,13 @@ class DepartmentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
         fields = ['id', 'dep_name', 'dep_head']
+        
+    # handle get
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        if instance.dep_head:
+            data['dep_head'] = instance.dep_head.first_name
+        return data
     
     def create(self, validated_data):
         print(validated_data)

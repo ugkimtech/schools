@@ -133,6 +133,7 @@ class StaffSerializer(serializers.ModelSerializer):
 
 class ManageStaffSerializer(serializers.ModelSerializer):
     school = SchoolPublicSerializer(read_only=True)
+    id = serializers.CharField(source='user.id')
     username = serializers.CharField(source='user.username')
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
@@ -150,7 +151,7 @@ class ManageStaffSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Staff
-        fields=['school', 'username', 'groups', 'first_name', 'last_name', 'email', 'is_active', 'groups',
+        fields=['school', 'id', 'username', 'groups', 'first_name', 'last_name', 'email', 'is_active', 'groups',
                 'other_name','gender', 
                 'date_of_birth', 'NIN','photo','phone','alt_phone','email',
                 'address' ,'district', 'emergence_contact_name','emergence_phone',
