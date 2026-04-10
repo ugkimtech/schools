@@ -18,6 +18,12 @@ export default function Staff(){
     const classes = useClasses();
     const [toggleForm, setToggleForm] = useState(false);
 
+    const staffMembers =()=>{
+        const myStaff = staff.map((member)=>(
+            {...member, departments:member.departments.map(d=>`${d.dep_name}. `)}
+        ))
+        return myStaff;
+    }
 
     useEffect(()=>{
         navigate('#');
@@ -47,7 +53,7 @@ export default function Staff(){
                     {header:'Gender', accessor:'gender'},
                     {header:'Phone', accessor:'phone'},
                     {header:'Department(s)', accessor:'departments'},]}
-                data={staff?staff:['NA']}
+                data={staffMembers()?staffMembers():[]}
             />
 
             <button style={{

@@ -31,16 +31,6 @@ export default function Form({form, onSubmit}){
         setClicked(!clicked);
     };
 
-    let departments = [];
-    const addDepartment = (e)=> {
-        var option = e.target;
-        if(option.checked){
-            departments.push(option.value);
-        }else {
-            departments.splice(departments.indexOf(e.target.value),1);
-        }
-    }
-
     const getData = async (e) => {
         setSpin(true);
         e.preventDefault();
@@ -50,29 +40,28 @@ export default function Form({form, onSubmit}){
         const elements = formEl.querySelectorAll("input, select");
         elements.forEach(element => {
             if(!element.name) return;
+
             if(element.type === 'file'){
                 if(element.files.length > 0){
                     data.append(element.name, element.files[0]);
                 }
+
             }else if(element.type === 'checkbox'){
-                if(element.checked){
+                if(element.checked) {
                     data.append(element.name, element.value);
                 }
+
             }else if(element.type === 'radio'){
                 if(element.checked){
                     data.append(element.name, element.value);
                 }
             }
             else {
-                if(element.value != ""){
+                if(element.value.trim() !== ""){
                     data.append(element.name, element.value);
                 }
             } 
         });
-
-        for(let pair of data.entries()){
-            console.log(pair[0], pair[1]);
-        }
 
         await onSubmit(data);
         setSpin(false);
@@ -120,10 +109,9 @@ export default function Form({form, onSubmit}){
                                             field.options.map((option, ind)=>(
                                                 <div key={ind} className={`check-items ${clicked?'on':'off'}`}>
                                                     <input type='checkbox'
-                                                        name={option.name}
+                                                        name={field.name}
                                                         value={option.value}
                                                         checked={option.checked} 
-                                                        onChange={(e)=> addDepartment(e)} 
                                                         required={option.required} />
 
                                                     <span>{option.text}</span>

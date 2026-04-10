@@ -10,6 +10,7 @@ from classes.models import Classes
 from academics.models import Subject
 from .models import Staff
 from school.serializers import SchoolPublicSerializer
+from departments.serializers import DepartmentsSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -54,19 +55,33 @@ class StaffSerializer(serializers.ModelSerializer):
                 'tin_number', 'nssf_number', 'certificate', 'contract_document']
     
     def to_internal_value(self, data):
+        from django.http import QueryDict
+        new_data = QueryDict(mutable=True)
+        
+        for key, values in data.lists():
+            if hasattr(data, 'files') and key in data.files:
+                new_data.setlist(key, values)
+            else:
+                new_data.setlist(key, values)
+        
         user_data = {
             'email':data.get('user.email'),
             'first_name':data.get('user.first_name'),
             'last_name':data.get('user.last_name'),
             'password':data.get('user.password')
         }
-        data['user'] = user_data
-        return super().to_internal_value(data)
+        
+        new_data['user'] = user_data
+        return super().to_internal_value(new_data)
         
     @transaction.atomic
     def create(self, validated_data):
         user_data = validated_data.pop('user')
         groups = validated_data.pop('groups', [])
+        subjects_taught = validated_data.pop('subjects_taught')
+        classes_taught = validated_data.pop('classes_taught')
+        departments = validated_data.pop('departments')
+        
         # user
         user = User.objects.create_user(
             username = 'default-username',
@@ -92,19 +107,15 @@ class StaffSerializer(serializers.ModelSerializer):
                     )
         
         try:
-            subjects_taught = validated_data.pop('subjects_taught')
-            classes_taught = validated_data.pop('classes_taught')
-            departments = validated_data.pop('departments')
-            
             staff = Staff.objects.create(user=user, school=school, **validated_data)
             
-            if 'subjects_taught' in validated_data:
+            if subjects_taught:
                 staff.subjects_taught.set(subjects_taught)
                 
-            if 'classes_taught' in validated_data:
+            if classes_taught:
                 staff.classes_taught.set(classes_taught)
             
-            if 'departments' in validated_data:
+            if departments:
                 staff.departments.set(departments)
             
             if groups:
@@ -117,6 +128,7 @@ class StaffSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError(
                         {'staff_error':'An Error occured during addition of a Staff member.', 'error':e}
                     )
+
 
 
 class ManageStaffSerializer(serializers.ModelSerializer):
@@ -133,6 +145,7 @@ class ManageStaffSerializer(serializers.ModelSerializer):
                                     source='user.groups',
                                     read_only=True
                                 )
+    departments = DepartmentsSerializer(many=True)
     is_active = serializers.CharField(source='user.is_active')
     
     class Meta:
