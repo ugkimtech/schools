@@ -16,7 +16,7 @@ class Term(models.Model):
 class Subject(models.Model):
     school = models.ForeignKey(SchoolProfile, on_delete=models.CASCADE)
     subject_name = models.CharField(max_length=50)
-    meta_data = models.JSONField(default=dict, null=True)
+    meta_data = models.JSONField(default=dict, null=True, blank=True)
     
     
 class Exam(models.Model):

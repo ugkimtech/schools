@@ -18,6 +18,7 @@ import Inventory from "../pages/schoolAdmin/Inventory";
 import Communications from "../pages/schoolAdmin/Communications";
 import Permissions from "../pages/schoolAdmin/AccessPermissions";
 import Settings from "../pages/schoolAdmin/Settings";
+import Subjects from "../pages/schoolAdmin/Subjects";
 
 
 function PrivateRoute({children}){
@@ -38,6 +39,7 @@ export default function AppRoutes(){
                     <Route path="students" element={<AdmitStudent />} />
                     <Route path="staff" element={<Staff />} />
                     <Route path="departments" element={<Departments />} />
+                    <Route path="subjects" element={<Subjects />} />
                     <Route path="classes" element={<Classes />} />
                     <Route path="timetable" element={<Timetable />} />
                     <Route path="examinations" element={<Examinations />} />

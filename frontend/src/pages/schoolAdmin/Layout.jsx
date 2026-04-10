@@ -13,6 +13,7 @@ import {
     FaLayerGroup,
     FaCalendarCheck,
     FaUserCircle,
+    FaBookReader,
 } from 'react-icons/fa';
 
 import { Outlet, useNavigate } from 'react-router-dom';
@@ -21,6 +22,7 @@ import "./assets/styles/Layout.css";
 import Sidebar from '../components/SideBar.jsx';
 import TopBar from '../components/TopBar.jsx';
 import APICall from '../../api/api.js';
+import { FaSchoolCircleCheck } from 'react-icons/fa6';
 
 export default function Layout() {
     const [profile, setProfile] = useState(null);
@@ -65,8 +67,10 @@ export default function Layout() {
         { label: 'Staff', icon: <FaUsers />, path: '/school/staff' },
         { label: 'Departments', icon: <FaLayerGroup />, path: '/school/departments' },
         { label: 'Classes', icon: <FaBookOpen />, path: '/school/classes' },
-        { label: 'Timetable', icon: <FaClipboardList />, path: '/school/timetable' },
+        { label: 'Subjects', icon: <FaBookReader />, path: '/school/subjects' },
+        { label: 'Terms', icon: <FaSchoolCircleCheck />, path: '/school' },
         { label: 'Examinations', icon: <FaMedal />, path: '/school/examinations' },
+        { label: 'Timetable', icon: <FaClipboardList />, path: '/school/timetable' },
         { label: 'Results', icon: <FaChartBar />, path: '/school/results' },
         { label: 'Attendence', icon: <FaCalendarCheck />, path: '/school/attendence' },
         { label: 'Finance', icon: <FaMoneyBillWave />, path: '/school/finance' },

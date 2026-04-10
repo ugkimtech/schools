@@ -12,6 +12,6 @@ export default function useSubjects(){
 }
 
 export async function createSubject(data){
-    const response = await api.create('academics/subjects/');
+    const response = await api.create('academics/subjects/', data);
     response === 201 ? alert('Success') : alert(response);
 }

@@ -31,6 +31,7 @@ export default function Departments(){
                 columns={[{header:'Department Name', accessor:'dep_name'}, {header:'Department Head', accessor:'dep_head'}]}
                 data={departments?departments:['NA']}
             />
+            
             <Form form={{
                 title: 'Create A New Department', fields:[
                     {field:'input', label:'Department Name', type:'text', name:'dep_name', placeholder:'Enter name of department'},

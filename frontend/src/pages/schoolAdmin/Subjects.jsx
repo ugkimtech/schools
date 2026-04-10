@@ -1,0 +1,84 @@
+import { FaBookReader, FaPlusCircle } from "react-icons/fa";
+import TableCard from "../components/TableCard";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import useSubjects, { createSubject } from "./hooks/useSubjects";
+import Form from "../components/Form";
+
+export default function Subjects(){
+    const navigate = useNavigate();
+    const subjects = useSubjects();
+
+    const subjectsTable =()=>{
+        return subjects.map(subject=>(
+            {...subject, subject_name:subject.subject_name, meta_data: subject.meta_data.papers.join(', ')}
+        ))
+    }
+
+    const newField =()=>{
+        const papersDiv = document.querySelector('.papers');
+        const papersInput = document.createElement('input');
+        papersInput.setAttribute('type', 'text');
+        papersInput.setAttribute('name', 'code');
+        papersInput.setAttribute('placeholder', 'Eg. P505/1 -or- 1');
+        papersDiv.appendChild(papersInput)
+    }
+
+    const saveSubject =(e)=>{
+        e.preventDefault();
+        const formEl = e.target;
+        const subjectData = new FormData();
+        const codesList=[];
+        const inputs = formEl.querySelectorAll('input');
+        inputs.forEach(input => {
+            if(input.name === 'subject_name'){
+                subjectData.append(input.name, input.value);
+            }else if(input.name === 'code'){
+                codesList.push(input.value)
+            }
+        });
+        
+        const metaData = {'papers': codesList}
+        subjectData.append('meta_data', JSON.stringify(metaData));
+        createSubject(subjectData);
+    }
+
+    useEffect(()=>{
+        navigate('#');
+    }, [subjects]);
+
+    return (
+        <>
+        <TableCard
+            header={{title:'Subjects Taught Here', icon:<FaBookReader />, manage:true}}
+            columns={[
+                {header:'Subject Name', accessor:'subject_name'}, 
+                {header:'Subject Papers (if any)', accessor:'meta_data'}]}
+            data={subjectsTable()?subjectsTable():['NA']}
+        />
+
+        <div className="custom-form-div">
+            <h2>Add new Subject</h2>
+            <form onSubmit={saveSubject} className="custom-form">
+                <label>Subject Name</label>
+                <input type="text" name="subject_name" placeholder="Eg. English" />
+                <div className="papers">
+                    <p>Subject Papers (if any)</p>
+                    <input type="text" name="code" placeholder="Eg. P505/1 -or- 1" />
+                </div>
+                <button onClick={newField} type="button"> <FaPlusCircle /> </button>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+
+        {/* <Form form={{
+            title: 'Create A New Subject', fields:[
+                {field:'input', label:'Subject Name', type:'text', name:'subject_name', placeholder:'eg. English'},
+                {field:'dropdown', label:'Head of Department', name:'dep_head', options:getHead()}
+            ],
+            button:{text: 'Create'}
+            }} onSubmit={createSubject}
+        /> */}
+        </>
+    )
+}
