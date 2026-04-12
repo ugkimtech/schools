@@ -1,9 +1,10 @@
-import { FaBookReader, FaPlusCircle } from "react-icons/fa";
+import { FaBookReader, FaCheck, FaPlusCircle } from "react-icons/fa";
 import TableCard from "../components/TableCard";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import useSubjects, { createSubject } from "./hooks/useSubjects";
 import Form from "../components/Form";
+import "../components/assets/styles/CustomElements.css";
 
 export default function Subjects(){
     const navigate = useNavigate();
@@ -66,19 +67,10 @@ export default function Subjects(){
                     <p>Subject Papers (if any)</p>
                     <input type="text" name="code" placeholder="Eg. P505/1 -or- 1" />
                 </div>
-                <button onClick={newField} type="button"> <FaPlusCircle /> </button>
-                <button type="submit">Save</button>
+                <button onClick={newField} type="button"> Add Paper <FaPlusCircle /> </button>
+                <button type="submit">Save <FaCheck /> </button>
             </form>
         </div>
-
-        {/* <Form form={{
-            title: 'Create A New Subject', fields:[
-                {field:'input', label:'Subject Name', type:'text', name:'subject_name', placeholder:'eg. English'},
-                {field:'dropdown', label:'Head of Department', name:'dep_head', options:getHead()}
-            ],
-            button:{text: 'Create'}
-            }} onSubmit={createSubject}
-        /> */}
         </>
     )
 }

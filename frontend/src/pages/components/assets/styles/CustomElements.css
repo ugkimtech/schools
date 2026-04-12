@@ -1,0 +1,41 @@
+.custom-form-div {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: var(--border);
+    margin-top: 15px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+}
+
+.custom-form input {
+    color: var(--input-txt);
+    background-color: var(--input-bg);
+    padding: 3px;
+    border: var(--border);
+    border-radius: 5px;
+}
+
+.custom-form button {
+    background-color: var(--btn);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.papers {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
