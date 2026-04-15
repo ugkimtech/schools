@@ -43,6 +43,7 @@
     width: 280px;
     background: var(--card-body);
     border-right: var(--border);
+    border-bottom: var(--border);
     display: flex;
     flex-direction: column;
     height: 100vh;

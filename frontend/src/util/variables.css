@@ -104,9 +104,9 @@ imported in main.jsx
     --input-border: 2px solid #2C3A5E;
     --hover-input: #2f56c2;
     --table-bg: #16213E;
-    --table-header: linear-gradient(135deg, #FFB300 0%, #FFCA28 50%, #FFD54F 100%);
+    --table-header: linear-gradient(135deg, #00005F 0%, #22225F 50%, #22229F 100%);
     --table-txt: #F5E6D3;
-    --border: 1px solid #2C3A5E;
+    --border: 3px solid #2C3A5E;
     --theme-icon: #fdfcf9;
     --border-icon: 1px solid #5C6A82;
 }
