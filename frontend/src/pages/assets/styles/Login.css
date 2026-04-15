@@ -10,6 +10,7 @@
     background-color: var(--card-body);
     color: var(--text2);
     box-shadow: 3px 5px 3px var(--shadow);
+    background: var(--bg);
 }
 
 h2{
@@ -40,19 +41,22 @@ a{
 .login-form input{
     width: 80%;
     height: 25px;
-    /* border: var(--input-border);
-    background-color: var(--input-bg);
-    color: var(--input-txt); */
     border-radius: 8px;
-    background-color: white;
+    background: var(--input-bg);
+    background: var(--input-bg);
     font-size: 20px;
     text-align: center;
     margin: 20px 0 20px 0;
+    color: var(--input-txt);
+}
+
+.login-form input:hover{
+    background: var(--hover-input);
 }
 
 .login-form button{
     border: none;
-    background-color: var(--btn);
+    background: var(--btn);
     width: 50%;
     border-radius: 5px;
     font-size: 20px;
@@ -65,7 +69,7 @@ a{
 
 .login-form button:hover{
     cursor: pointer;
-    background-color: var(--hover-input);
+    background: var(--hover-input);
 }
 
 .setup{
@@ -78,4 +82,5 @@ a{
     padding-bottom: 10px;
     font-weight: bold;
     text-decoration: none;
+    color: blue
 }

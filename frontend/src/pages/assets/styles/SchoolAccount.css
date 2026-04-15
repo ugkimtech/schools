@@ -8,10 +8,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border: 1px solid lightgray;
-    background-color: white;
+    border: var(--border);
+    background: var(--bg);
     border-radius: 15px;
-    box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--box-shadow);
 }
 
 .create-form{
@@ -24,12 +24,14 @@
     margin: 15px;
 }
 
-.create-form input, select{
+.create-form input, .create-form select{
     width: 80%;
     height: 25px;
-    border: none;
+    border: var(--border);
+    border-radius: 5px;
     border-bottom: 2px solid blue;
-    background-color: white;
+    background: var(--input-bg);
+    color: var(--input-txt);
     font-size: 20px;
     text-align: center;
     margin: 20px 0 20px 0;

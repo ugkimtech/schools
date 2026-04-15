@@ -23,5 +23,5 @@ body{
   justify-content: center;
   align-items: center;
   margin: 0px;
-  background-color: var(--bg);
+  background: var(--bg);
 }

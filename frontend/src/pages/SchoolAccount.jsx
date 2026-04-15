@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import APICall from "../api/api";
 import "./assets/styles/SchoolAccount.css";
 import Spiner from "./components/Spiner";
+import ToggleTheme from "./components/Theme";
 
 
 export default function SchoolAccount(){
@@ -49,6 +50,7 @@ export default function SchoolAccount(){
 
     return (
         <div className="school-account">
+            <ToggleTheme className="theme-icon" />
             <h2>STEP1: Create Account for your school</h2>
             <form onSubmit={create} encType="multipart/form-data" className="create-form">
                 {error && <p className="error">{error}</p>}
