@@ -19,23 +19,31 @@
 
 .custom-form input {
     color: var(--input-txt);
-    background-color: var(--input-bg);
+    background: var(--input-bg);
     padding: 3px;
     border: var(--border);
     border-radius: 5px;
 }
 
 .custom-form button {
-    background-color: var(--btn);
+    background: var(--btn);
     color: white;
     border: none;
     border-radius: 5px;
     padding: 5px;
 }
 
-.papers {
+.papers, .streams {
     display: flex;
     flex-direction: column;
     gap: 5px;
     align-items: center;
+}
+
+.more-streams{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    border-top: var(--border);
 }

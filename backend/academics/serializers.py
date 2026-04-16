@@ -25,7 +25,7 @@ class TermSerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ['subject_name','meta_data']
+        fields = ['id', 'subject_name','meta_data']
     
     def create(self, validated_data):
         user = self.context['request'].user

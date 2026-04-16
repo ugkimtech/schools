@@ -1,14 +1,15 @@
 import { FaBookReader, FaCheck, FaPlusCircle } from "react-icons/fa";
 import TableCard from "../components/TableCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useSubjects, { createSubject } from "./hooks/useSubjects";
-import Form from "../components/Form";
 import "../components/assets/styles/CustomElements.css";
+import Spiner from "../components/Spiner";
 
 export default function Subjects(){
     const navigate = useNavigate();
     const subjects = useSubjects();
+    const [spin, setSpin] = useState(false);
 
     const subjectsTable =()=>{
         return subjects.map(subject=>(
@@ -27,6 +28,7 @@ export default function Subjects(){
 
     const saveSubject =(e)=>{
         e.preventDefault();
+        setSpin(true);
         const formEl = e.target;
         const subjectData = new FormData();
         const codesList=[];
@@ -42,6 +44,7 @@ export default function Subjects(){
         const metaData = {'papers': codesList}
         subjectData.append('meta_data', JSON.stringify(metaData));
         createSubject(subjectData);
+        setSpin(false);
     }
 
     useEffect(()=>{
@@ -70,6 +73,7 @@ export default function Subjects(){
                 <button onClick={newField} type="button"> Add Paper <FaPlusCircle /> </button>
                 <button type="submit">Save <FaCheck /> </button>
             </form>
+            {spin ? <Spiner state={'start'} />:''}
         </div>
         </>
     )

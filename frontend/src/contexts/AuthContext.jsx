@@ -49,7 +49,7 @@ export const AuthProvider = ({children}) => {
                     return data.access;
                 }else {
                     localStorage.clear();
-                    window.location.href = '/login';
+                    window.location.href = '/';
                 }
             }catch(e){
                 console.log(e);

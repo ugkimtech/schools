@@ -12,6 +12,6 @@ export default function useClasses(){
 }
 
 export async function createClass(data){
-    const response = await api.create('classes/manage-classes/');
+    const response = await api.create('classes/manage-classes/', data);
     response === 201 ? alert('Success') : alert(response);
 }

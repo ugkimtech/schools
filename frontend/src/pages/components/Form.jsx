@@ -24,6 +24,15 @@ export default function Form({form, onSubmit}){
     const [error, setError] = useState('');
     const [toggleForm, setToggleForm] = useState('on');
     const [clicked, setClicked] = useState(false);
+
+    const [openGroups, setOpenGroups] = useState({});
+
+    const toggleGroup = (name) => {
+        setOpenGroups((prev) => ({
+            ...prev,
+            [name]: !prev[name],
+        }));
+    };
     
     const formToggle = () => toggleForm === 'on' ? setToggleForm('off'): setToggleForm('on');
 
@@ -101,13 +110,17 @@ export default function Form({form, onSubmit}){
                                                 required={field.required} />
                                     </>:
 
-                                    field.field === 'checkbox' ?<>
-                                    <div className={`check-parent ${clicked?'on':'off'}`}>
-                                        <label> {field.label} </label>
-                                        <button type="button" onClick={checkClick} className="select">{clicked? <FaAngleUp className="check-ico" /> : <FaAngleDown className="check-ico" /> } </button>
-                                        {
-                                            field.options.map((option, ind)=>(
-                                                <div key={ind} className={`check-items ${clicked?'on':'off'}`}>
+                                    field.field === "checkbox"?
+                                        <>
+                                        <div className={`check-parent`}>
+                                            <label> {field.label} </label>
+                                            <div onClick={() => toggleGroup(field.name)} style={{ cursor: "pointer" }} >
+                                                {openGroups[field.name] ? <FaAngleUp className="check-ico" /> : <FaAngleDown className="check-ico" />}
+                                            </div>
+                                        </div>
+                                        <div className={`checkbox-group ${openGroups[field.name] ? "open":"closed"}`}>
+                                            {field.options.map((option, ind)=>(
+                                                <div key={ind} className='check-items'>
                                                     <input type='checkbox'
                                                         name={field.name}
                                                         value={option.value}
@@ -116,10 +129,9 @@ export default function Form({form, onSubmit}){
 
                                                     <span>{option.text}</span>
                                                 </div>
-                                            ))
-                                        }
-                                    </div>
-                                    </>:
+                                            ))}
+                                            </div>
+                                        </>:
 
                                     field.field === 'file' ?
                                     <>
