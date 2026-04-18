@@ -65,10 +65,11 @@
     min-width: 600px;
   }
   
-  .department-table th {
+  .department-table thead th {
     text-align: left;
     padding: 12px 8px;
-    color: var(--text2);
+    color: var(--text1);
+    background: var(--table-header);
     font-weight: 500;
     font-size: 0.85rem;
     border-bottom: var(--border);

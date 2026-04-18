@@ -14,7 +14,7 @@ class FeeItem(models.Model):
 class StudentFee(models.Model):
     school = models.ForeignKey(SchoolProfile, on_delete=models.CASCADE)
     student = models.ForeignKey('student.StudentProfile', on_delete=models.CASCADE)
-    payable_amount = models.JSONField(default=dict)
+    payable_amount = models.JSONField(default=dict, null=True, blank=True)
     '''{
         'item:amount,
         ...

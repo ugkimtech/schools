@@ -11,14 +11,13 @@ from fees.models import StudentFee
 class StudentSeralizer(serializers.ModelSerializer):
     first_name = serializers.CharField(write_only=True)
     last_name = serializers.CharField(write_only=True)
-    payable_amount = serializers.DecimalField(max_digits=10, decimal_places=2,write_only=True)
     
     class Meta:
         model = StudentProfile
         fields = ['first_name','last_name','other_name','admission_number','current_class',
         'stream','gender','photo','status','guardian_name','guardian_phone',
         'guardian_email','relationship','address','allergies','medical_conditions',
-        'special_needs','fee_category','boarding_status', 'payable_amount']
+        'special_needs','fee_category','boarding_status']
     
     def create(self, validated_data):
         try:
@@ -52,9 +51,9 @@ class StudentSeralizer(serializers.ModelSerializer):
                 raise serializers.ValidationError(
                             {'student_profile':'Not a school admin, please login as a school admin to continue.'}
                         )
-                
-            payable_amount = validated_data.pop('payable_amount')
-                
+            
+            payable_amount = validated_data.pop('payable_amount', {})
+            
             student_profile = StudentProfile.objects.create(
                 student_user = student,
                 school = school,
@@ -62,14 +61,25 @@ class StudentSeralizer(serializers.ModelSerializer):
             )
             
             #fees allocation
-            StudentFee.objects.create(
-                school=school,
-                student = student_profile,
-                payable_amount=payable_amount
-            )
+            try:
+                fee = StudentFee.objects.create(
+                    school=school,
+                    student = student_profile,
+                    payable_amount=payable_amount
+                )
+            except Exception as ex:
+                student = User.objects.get(id=student.id)
+                student.delete()
+                print('fee',ex)
+                fee = StudentFee.objects.get(id=fee.id)
+                fee.delete()
+                raise serializers.ValidationError(
+                            {'fee_error':ex}
+                        )
             
             return student_profile
         except Exception as e:
+            print(e)
             _student = User.objects.get(id=student.id)
             _student.delete()
             raise serializers.ValidationError({'student_error':'An error occured during student registration! please try again'})

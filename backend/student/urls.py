@@ -4,7 +4,7 @@ from .views import RegisterStudent, ManageStudent
 
 
 router = DefaultRouter()
-router.register(r'vv', ManageStudent, basename='manage_student')
+router.register(r'student', ManageStudent, basename='manage_student')
 
 urlpatterns = [
     path('new-student/', RegisterStudent.as_view()),

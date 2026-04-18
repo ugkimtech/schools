@@ -19,4 +19,5 @@ export async function createStaff(data){
         console.log(pair[0],':', pair[1]);
     }
     response === 201 ? alert('Success') : alert(response);
+    window.location.reload(true);
 }

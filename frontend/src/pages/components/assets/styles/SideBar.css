@@ -43,6 +43,7 @@
     width: 280px;
     background: var(--card-body);
     border-right: var(--border);
+    border-bottom: var(--border);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -277,8 +278,8 @@
     width: 100%;
     padding: 12px;
     border: var(--border);
-    background: var(--card-body);
-    color: var(--error);
+    background: var(--error);
+    color: var(--text1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -286,10 +287,12 @@
     gap: 8px;
     cursor: pointer;
     transition: all 0.2s;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .logout-btn:hover {
     background: var(--error);
     color: white;
-    border-color: var(--error);
+    border-color: var(--text2);
 }

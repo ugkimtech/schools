@@ -31,7 +31,6 @@ export default function Staff(){
 
     const formToggle = () => setToggleForm(!toggleForm);
 
-
     return (
         <>
             <button style={{
@@ -68,8 +67,8 @@ export default function Staff(){
                 toggleForm ? 
                 <Form form={{
                     title: 'Add New Staff Member', fields:[
-                        {field:'input', label:'First Name', type:'text', name:'user.first_name', placeholder:'e.g: Charles'},
-                        {field:'input', label:'Last Name', type:'text', name:'user.last_name', placeholder:'e.g: Kimera'},
+                        {field:'input', label:'First Name', type:'text', name:'user.first_name', placeholder:'e.g: Charles', required:true},
+                        {field:'input', label:'Last Name', type:'text', name:'user.last_name', placeholder:'e.g: Kimera', required:true},
                         {field:'input', label:'Other Name(s)', type:'text', name:'other_name', placeholder:'3rd Name'},
                         {field:'input', label:'Email', type:'email', name:'user.email', placeholder:'e.g: exampl@email.com'},
                         {field:'input', label:'Phone', type:'text', name:'phone', placeholder:'e.g: 0712345678'},
@@ -106,12 +105,15 @@ export default function Staff(){
                         {field:'input', label:'Contract End', type:'date', name:'contract_end'},
                         {field:'input', label:'Qualification', type:'text', name:'qualification', placeholder:'e.g Bachelors Degree'},
                         {field:'input', label:'Experience (yrs)', type:'number', name:'experience', placeholder:'e.g 2 (in years)'},
-                        {field:'dropdown', label:'Subjects Taught (If Teacher)', name:'subjects_taught', options:subjects.map((subject)=>(
-                            {value:subject.id, option:subject.subject_name}
+
+                        {field:'checkbox', label:'Subjects Taught (If Teacher)', name:'subjects_taught', options:subjects.map((subject)=>(
+                            {name:'subjects_taught', value:subject.id, text:subject.subject_name}
                         ))},
-                        {field:'dropdown', label:'Classes Taught (If Teacher)', name:'classes_taught', options:classes.map((item)=>(
-                            {value:item.id, option:item.class_name}
+
+                        {field:'checkbox', label:'Classes Taught (If Teacher)', name:'classes_taught', options:classes.map((item)=>(
+                            {name:'classes_taught', value:item.id, text:item.class_name}
                         ))},
+
                         {field:'input', label:'Registration Number', type:'text', name:'reg_number', placeholder:'if any'},
                         {field:'input', label:'License Number', type:'text', name:'license_number', placeholder:'if any'},
                         {field:'input', label:'Salary', type:'number', name:'salary', placeholder:'e.g: 1000'},

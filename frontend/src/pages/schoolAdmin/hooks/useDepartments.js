@@ -15,5 +15,6 @@ export default function useDepartments(){
 
 export const createDepartment = async (data) => {
     const response = await api.create('departments/manage-departments/', data);
-    response != 201 ? alert(response):alert('Success')
+    response != 201 ? alert(response):alert('Success');
+    window.location.reload(true);
 }

@@ -82,10 +82,15 @@ class StaffSerializer(serializers.ModelSerializer):
         classes_taught = validated_data.pop('classes_taught')
         departments = validated_data.pop('departments')
         
+
+        try:
+            email = user_data['email']
+        except Exception:
+            email = ''
         # user
         user = User.objects.create_user(
             username = 'default-username',
-            email=user_data['email'],
+            email=email,
             first_name=user_data['first_name'],
             last_name=user_data['last_name'],
             password=user_data['password']
