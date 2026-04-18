@@ -4,6 +4,7 @@ import Spiner from "./Spiner";
 import { FaAngleUp, FaTimesCircle } from "react-icons/fa";
 import { FaAngleDown, FaTurnDown } from "react-icons/fa6";
 
+export var formElement;
 
 export default function Form({form, onSubmit}){
     // Example
@@ -23,7 +24,6 @@ export default function Form({form, onSubmit}){
     const [spin, setSpin] = useState(false);
     const [error, setError] = useState('');
     const [toggleForm, setToggleForm] = useState('on');
-    const [clicked, setClicked] = useState(false);
 
     const [openGroups, setOpenGroups] = useState({});
 
@@ -35,10 +35,6 @@ export default function Form({form, onSubmit}){
     };
     
     const formToggle = () => toggleForm === 'on' ? setToggleForm('off'): setToggleForm('on');
-
-    const checkClick =()=>{
-        setClicked(!clicked);
-    };
 
     const getData = async (e) => {
         setSpin(true);
@@ -76,11 +72,16 @@ export default function Form({form, onSubmit}){
         setSpin(false);
     }
 
+    useEffect(()=>{
+        const form = document.getElementsByTagName('form');
+        formElement = form;
+    })
+
     if(form) return (
         <div className={`form-main ${toggleForm}`}>
             <div className="form-card">
-                <h1>{form.title}</h1>
                 <button className={`formToggle-btn`} onClick={formToggle}><FaTimesCircle /> Close</button>
+                <h1>{form.title}</h1>
                 {error && <p>{error}</p>}
                 <form onSubmit={getData} className="form">
                     {

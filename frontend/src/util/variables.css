@@ -3,7 +3,7 @@ imported in main.jsx
 */
 
 /* light theme */
-/* :root {
+:root {
     --bg: #FFFFFF;
     --text1: #1a1a1a;
     --text2: #666666;
@@ -13,7 +13,7 @@ imported in main.jsx
     --numbers: #5a5c69;
     --success: #28a745;
     --warning: #ff9f43;
-    --error: #ff4c4c;
+    --error: #da3636;
     --shadow: rgba(0,0,0,0.1);
     --box-shadow: 3px 2px 5px rgba(0,0,0,0.1);
     --input-bg: #FFFFFF;
@@ -23,7 +23,7 @@ imported in main.jsx
     --table-bg: #FFFFFF;
     --table-header: #F3F4F6;
     --table-txt: #1F2937;
-    --border: 1px solid #EEEEEE;
+    --border: 2px solid #EEEEEE;
     --theme-icon: #151c2c;
     --border-icon: 1px solid #151c2c;
 }
@@ -32,13 +32,13 @@ imported in main.jsx
     --bg: #151c2c;
     --text1: #FFFFFF;
     --text2: #cccccc;
-    --btn: #38bdf8;
+    --btn: #c238f8;
     --card-body: #151c2c;
     --card-border: #1e293b;
     --numbers: #38bdf8;
     --success: rgba(28, 200, 138, 0.2);
     --warning: rgba(255,159,67,0.2);
-    --error: rgba(255, 76, 76, 0.2);
+    --error: rgba(243, 8, 8, 0.2);
     --shadow: rgba(0,0,0,0.5);
     --box-shadow: 3px 2px 5px rgba(0,0,0,0.5);
     --input-bg: #1f2937;
@@ -48,10 +48,10 @@ imported in main.jsx
     --table-bg: #1e293b;
     --table-header: #111827;
     --table-txt: #E5E7EB;
-    --border: 1px solid #1e293b;
+    --border: 3px solid #1e293b;
     --theme-icon: #FFFFFF;
     --border-icon: 1px solid #FFFFFF;
-} */
+}
 
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
@@ -60,8 +60,7 @@ imported in main.jsx
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-:root {
-    /* light theme - Clean Professional */
+/* :root {
     --bg: #FFFFFF;
     --text1: #000000;
     --text2: #858483;
@@ -109,4 +108,4 @@ imported in main.jsx
     --border: 3px solid #2C3A5E;
     --theme-icon: #fdfcf9;
     --border-icon: 1px solid #5C6A82;
-}
+} */

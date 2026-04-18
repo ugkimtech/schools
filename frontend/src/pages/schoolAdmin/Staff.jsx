@@ -110,9 +110,6 @@ export default function Staff(){
                             {name:'subjects_taught', value:subject.id, text:subject.subject_name}
                         ))},
 
-                        // {field:'dropdown', label:'Classes Taught (If Teacher)', name:'classes_taught', options:classes.map((item)=>(
-                        //     {value:item.id, option:item.class_name}
-                        // ))},
                         {field:'checkbox', label:'Classes Taught (If Teacher)', name:'classes_taught', options:classes.map((item)=>(
                             {name:'classes_taught', value:item.id, text:item.class_name}
                         ))},

@@ -27,9 +27,6 @@
     color: red;
     border: none;
     background: var(--bg);
-    position: absolute;
-    top: 2%;
-    right: 2%;
 }
 
 .form-card{

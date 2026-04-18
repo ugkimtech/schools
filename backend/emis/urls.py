@@ -30,7 +30,7 @@ urlpatterns = [
     path('departments/', include('departments.urls')),
     path('staff/', include('staff.urls')),
     path('classes/', include('classes.urls')),
-    path('student/', include('student.urls')),
+    path('students/', include('student.urls')),
     path('fees/', include('fees.urls')),
     path('academics/', include('academics.urls')),
     path('library/', include('library.urls')),

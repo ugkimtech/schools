@@ -13,7 +13,7 @@ class StudentProfile(models.Model):
     other_name = models.CharField(max_length=50, null=True)
     admission_number = models.CharField(max_length=50, null=True)
     current_class = models.ForeignKey(Classes, on_delete=models.SET_NULL, null=True)
-    stream = models.CharField(max_length=50)
+    stream = models.CharField(max_length=50, null=True, blank=True)
     gender = models.CharField(max_length=50, choices=(
                                 ('MALE','male'),('FEMALE', 'female'),('UNKNOWN','unknown')
                                 ))
@@ -21,7 +21,7 @@ class StudentProfile(models.Model):
     status = models.CharField(max_length=50,
                                  choices=(
                                      ('ACTIVE', 'active'), ('SUSPENDED', 'suspended')
-                                 ))
+                                 ), null=True, blank=True)
     #guardian
     guardian_name = models.CharField(max_length=50, null=True)
     guardian_phone = models.CharField(max_length=50)
@@ -31,7 +31,7 @@ class StudentProfile(models.Model):
     #health
     allergies = models.CharField(max_length=50, null=True)
     medical_conditions = models.CharField(max_length=50, null=True)
-    special_needs = models.CharField(max_length=50, null=True)
+    special_needs = models.CharField(max_length=100, null=True)
     fee_category = models.CharField(max_length=50, null=True)
     boarding_status = models.CharField(max_length=50, null=True,
                                        choices=(

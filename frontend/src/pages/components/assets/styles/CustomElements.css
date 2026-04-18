@@ -47,3 +47,13 @@
     align-items: center;
     border-top: var(--border);
 }
+
+.formToggle-btn {
+    color: red;
+    border: var(--border);
+    border-color: var(--error);
+    border-radius: 5px;
+    margin-top: 15px;
+    background: var(--bg);
+    position: relative;
+}

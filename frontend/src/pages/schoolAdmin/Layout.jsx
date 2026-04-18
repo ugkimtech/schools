@@ -68,7 +68,6 @@ export default function Layout() {
         { label: 'Departments', icon: <FaLayerGroup />, path: '/school/departments' },
         { label: 'Classes', icon: <FaBookOpen />, path: '/school/classes' },
         { label: 'Subjects', icon: <FaBookReader />, path: '/school/subjects' },
-        { label: 'Terms', icon: <FaSchoolCircleCheck />, path: '/school' },
         { label: 'Examinations', icon: <FaMedal />, path: '/school/examinations' },
         { label: 'Timetable', icon: <FaClipboardList />, path: '/school/timetable' },
         { label: 'Results', icon: <FaChartBar />, path: '/school/results' },

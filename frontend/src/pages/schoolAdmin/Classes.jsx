@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useClasses, { createClass } from "./hooks/useClasses";
 import { useEffect, useState } from "react";
 import TableCard from "../components/TableCard";
-import { FaArrowLeft, FaBookOpen, FaCheck, FaPlusCircle } from "react-icons/fa";
+import { FaBookOpen, FaCheck, FaPlusCircle, FaTimesCircle } from "react-icons/fa";
 import "../components/assets/styles/CustomElements.css";
 import useStaff from "./hooks/useStaff";
 import Spiner from "../components/Spiner";
@@ -13,6 +13,9 @@ export default function Classes() {
     const navigate = useNavigate();
     const staff = useStaff();
     const [spin, setSpin] = useState(false);
+    const [toggleForm, setToggleForm] = useState(false);
+    
+    const formToggle = () => setToggleForm(!toggleForm);
 
     const getStaff = ()=> {
         const teachers=[];
@@ -109,6 +112,57 @@ export default function Classes() {
 
     return (
         <>
+        {
+            !toggleForm ?
+            <button style={{
+                color:'green',
+                border:'var(--border)',
+                background:'var(--bg)',
+                borderRadius:'5px',
+                margin:'5px'
+            }} onClick={formToggle}><FaPlusCircle /> New Class</button>:''
+        }
+
+        {
+            toggleForm ?
+            <div className="custom-form-div">
+                <button className={`formToggle-btn`} onClick={formToggle}><FaTimesCircle /> Close</button>
+                <h2>Add new Class</h2>
+                <form onSubmit={saveClass} className="custom-form">
+                    <label>Class Name</label>
+                    <input type="text" name="class_name" placeholder="Eg. P.1 -or- S.1" />
+                        <label>Class Teacher</label>
+                        <select name="class_teacher">
+                            <option value=''>-select-</option>
+                            {
+                                getStaff().map((teacher, id)=>(
+                                    <option key={id} value={teacher.value}>{teacher.option}</option>
+                                ))
+                            }
+                        </select>
+                    <div className="streams">
+                        <p>Streams (if any)</p>
+                        <label>Stream Name</label>
+                        <input type="text" name="stream" placeholder="Eg. A" />
+                        <label>Block/Room No.</label>
+                        <input type="text" name="room" placeholder="Eg. 201" />
+                        <label>Class Teacher</label>
+                        <select name="stream_class_teacher">
+                            <option value=''>-select-</option>
+                            {
+                                getStaff().map((teacher, index)=>(
+                                    <option key={index} value={teacher.value}>{teacher.option}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <button onClick={newField} type="button"> Add Stream <FaPlusCircle /> </button>
+                    <button type="submit">Save <FaCheck /> </button>
+                </form>
+                {spin ? <Spiner state={'start'} />:''}
+            </div>:''
+        }
+
         <TableCard
             header={{title:'Classes', icon:<FaBookOpen />, manage:true}}
             columns={[
@@ -117,42 +171,6 @@ export default function Classes() {
                 {header:'Streams', accessor:'streams'}]}
             data={classesTable()?classesTable():['NA']}
         />
-        
-        <div className="custom-form-div">
-            <h2>Add new Class</h2>
-            <form onSubmit={saveClass} className="custom-form">
-                <label>Class Name</label>
-                <input type="text" name="class_name" placeholder="Eg. P.1 -or- S.1" />
-                    <label>Class Teacher</label>
-                    <select name="class_teacher">
-                        <option value=''>-select-</option>
-                        {
-                            getStaff().map((teacher, id)=>(
-                                <option key={id} value={teacher.value}>{teacher.option}</option>
-                            ))
-                        }
-                    </select>
-                <div className="streams">
-                    <p>Streams (if any)</p>
-                    <label>Stream Name</label>
-                    <input type="text" name="stream" placeholder="Eg. A" />
-                    <label>Block/Room No.</label>
-                    <input type="text" name="room" placeholder="Eg. 201" />
-                    <label>Class Teacher</label>
-                    <select name="stream_class_teacher">
-                        <option value=''>-select-</option>
-                        {
-                            getStaff().map((teacher, index)=>(
-                                <option key={index} value={teacher.value}>{teacher.option}</option>
-                            ))
-                        }
-                    </select>
-                </div>
-                <button onClick={newField} type="button"> Add Stream <FaPlusCircle /> </button>
-                <button type="submit">Save <FaCheck /> </button>
-            </form>
-            {spin ? <Spiner state={'start'} />:''}
-        </div>
         </>
     );
 }
