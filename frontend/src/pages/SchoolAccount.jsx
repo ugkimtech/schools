@@ -37,7 +37,7 @@ export default function SchoolAccount(){
         });
 
         const api = new APICall();
-        const response = await api.create('school/create-school/', data);
+        const response = await api.create('school/create-school/', data, false);
         if(response === 201){
             const logedin = await login(data.get('username'), data.get('password'));
             setSpin(false);
