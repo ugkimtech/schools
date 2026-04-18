@@ -4,6 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from .models import SchoolProfile
 from .serializers import SchoolSerializer, MySchoolSerializer
 from users.permissions import IsSchooolAdmin, IsSuperAdmin
+from rest_framework.permissions import AllowAny
 from super_admin.services import Subscriptions
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -12,6 +13,7 @@ User = get_user_model()
 class CreateSchool(CreateAPIView):
     queryset = SchoolProfile.objects.all()
     serializer_class = SchoolSerializer
+    permission_classes = [AllowAny]
     parser_classes = [MultiPartParser, FormParser]
 
 

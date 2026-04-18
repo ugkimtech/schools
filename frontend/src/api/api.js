@@ -4,13 +4,13 @@ class APICall {
     constructor() {
     }
 
-    async create (endPoint, data) {
+    async create (endPoint, data, auth=true) {
         try{
             const response = await fetch(`${BASE_URL + endPoint}`, { 
                 method: 'POST',
-                headers:{
+                headers: auth ? {
                     "Authorization":`Bearer ${localStorage.getItem('access')}`,
-                },
+                } : {},
                 body: data
             });
 
