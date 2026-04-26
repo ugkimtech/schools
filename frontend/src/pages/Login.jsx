@@ -37,17 +37,17 @@ export default function Login(){
                 try {
                     const role = userdata.groups[0];
                     role === 'school'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Deputy'?navigate(`/${role.toLowerCase()}`):
-                    role === 'DOS'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Accountant'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Bursar'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Teacher'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Library'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Student'?navigate(`/${role.toLowerCase()}`):
-                    role === 'Others'?navigate('/staff'):
-                    navigate('/');
+                    // role === 'Deputy'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'DOS'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Accountant'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Bursar'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Teacher'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Library'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Student'?navigate(`/${role.toLowerCase()}`):
+                    // role === 'Others'?navigate('/staff'):
+                    alert(`No Dashboard for ${role}`);
                 }catch (e){
-                    navigate('/');
+                    console.log(e);
                 }
             }
         }
