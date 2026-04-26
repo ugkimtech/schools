@@ -76,7 +76,10 @@ export default function Staff(){
                         {field:'input', label:'Date Of Birth', type:'date', name:'date_of_birth', placeholder:'Select'},
                         {field:'dropdown', label:'Access Permissions', name:'groups', options:groups.map((group, index)=>(
                             {value:group.id, option:group.name}
-                        ))},
+                        ))}, //groups now decide the dashboard link.
+                        // {field:'dropdown', label:'Access Permissions', name:'groups', options:[
+                        //     {value:'dhm', option:'Deputy H/M'}
+                        // ]},
                         {field:'input', label:'Password', type:'password', name:'user.password', placeholder:'0000', required:true},
                         {field:'dropdown', label:'Gender', name:'gender', options:[
                             {value:'MALE', option:'Male'},

@@ -44,7 +44,8 @@ export default function AdmitStudent(){
                 {header:'First Name', accessor:'first_name'}, 
                 {header:'Last Name', accessor:'last_name'},
                 {header:'Other Name(s)', accessor:'other_name'},
-                {header:'Student ID', accessor:'username'},
+                {header:'Student ID \n (Username)', accessor:'username'},
+                {header:'Admission No.', accessor:'admission_number'},
                 {header:'Gender', accessor:'gender'},
                 {header:'Class', accessor:'current_class'},
                 {header:'Stream', accessor:'stream'},]}

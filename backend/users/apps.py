@@ -8,8 +8,8 @@ class UsersConfig(AppConfig):
     # def ready(self):
     #     from django.contrib.auth.models import Group
     #     grous = [
-    #         'super_admin', 'school', 'administration', 'finance', 'academics', 
-    #         'teacher', 'burser', 'headteacher', 'secretary', 'other_staff', 'student'
+    #         'super_admin', 'school', 'Deputy', 'DOS', 'Accountant', 
+    #         'Bursar', 'Teacher', 'Library', 'Student', 'Others'
     #     ]
     #     try:
     #         for group_name in grous:

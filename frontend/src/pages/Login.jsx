@@ -33,7 +33,22 @@ export default function Login(){
             const api = new APICall();
             const userdata = await api.get(`user/getuser/${user.user_id}/`);
             if(userdata){
-                userdata.groups[0] === 'school'?navigate('/school'):alert(`No dashboard for ${userdata.groups[0]}`)
+                // userdata.groups[0] === 'school'?navigate('/school'):alert(`No dashboard for ${userdata.groups[0]}`)
+                try {
+                    const role = userdata.groups[0];
+                    role === 'school'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Deputy'?navigate(`/${role.toLowerCase()}`):
+                    role === 'DOS'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Accountant'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Bursar'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Teacher'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Library'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Student'?navigate(`/${role.toLowerCase()}`):
+                    role === 'Others'?navigate('/staff'):
+                    navigate('/');
+                }catch (e){
+                    navigate('/');
+                }
             }
         }
     };

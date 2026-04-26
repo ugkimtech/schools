@@ -1,8 +1,13 @@
 from rest_framework import serializers
 from .models import Classes, SchoolProfile
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 class ClassSerializer(serializers.ModelSerializer):
+    class_teacher = serializers.PrimaryKeyRelatedField(
+        queryset = User.objects.all()
+    )
     
     class Meta:
         model = Classes
@@ -12,7 +17,7 @@ class ClassSerializer(serializers.ModelSerializer):
     def to_representation(self, instance):
         data = super().to_representation(instance)
         if instance.class_teacher:
-            data['class_teacher'] = instance.class_teacher.user.first_name
+            data['class_teacher'] = instance.class_teacher.first_name
         return data
         
     def create(self, validated_data):

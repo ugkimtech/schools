@@ -51,6 +51,10 @@ export default function AppRoutes(){
                     <Route path="permissions" element={<Permissions />} />
                     <Route path="settings" element={<Settings />} />
                 </Route>
+                <Route path="/deputy"  
+                    element={<PrivateRoute> <Layout /> </PrivateRoute>}>
+
+                </Route>
             </Routes>
         </BrowserRouter>
     )

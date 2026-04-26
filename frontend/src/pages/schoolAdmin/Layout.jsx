@@ -36,7 +36,7 @@ export default function Layout() {
             const school = await api.get('school/my-school/');
             setProfile(school[0]);
         } catch (e) {
-            console.log(e);
+            alert('Error while fetching school profile');
         }
     }
 
@@ -68,16 +68,18 @@ export default function Layout() {
         { label: 'Departments', icon: <FaLayerGroup />, path: '/school/departments' },
         { label: 'Classes', icon: <FaBookOpen />, path: '/school/classes' },
         { label: 'Subjects', icon: <FaBookReader />, path: '/school/subjects' },
-        { label: 'Examinations', icon: <FaMedal />, path: '/school/examinations' },
-        { label: 'Timetable', icon: <FaClipboardList />, path: '/school/timetable' },
-        { label: 'Results', icon: <FaChartBar />, path: '/school/results' },
-        { label: 'Attendence', icon: <FaCalendarCheck />, path: '/school/attendence' },
-        { label: 'Finance', icon: <FaMoneyBillWave />, path: '/school/finance' },
-        { label: 'School Inventory', icon: <FaBriefcase />, path: '/school/inventory' },
+        { label: 'Fees Structure', icon: <FaMoneyBillWave />, path: '/school/finance' },
+        // { label: 'Examinations', icon: <FaMedal />, path: '/school/examinations' },
+        // { label: 'Timetable', icon: <FaClipboardList />, path: '/school/timetable' },
+        // { label: 'Results', icon: <FaChartBar />, path: '/school/results' },
+        // { label: 'Attendence', icon: <FaCalendarCheck />, path: '/school/attendence' },
+        // { label: 'School Inventory', icon: <FaBriefcase />, path: '/school/inventory' },
         { label: 'Communications', icon: <FaEnvelope />, path: '/school/communications' },
-        { label: 'Users & Permissions', icon: <FaUserCircle />, path: '/school/permissions' },
+        // { label: 'Users & Permissions', icon: <FaUserCircle />, path: '/school/permissions' },
         { label: 'Settings', icon: <FaCog />, path: '/school/settings' },
-    ]
+    ] // Removed items will appear in dashboard as summaries. 
+      // Advanced Permissions control will be added in future.
+      //Settings to act as setup wizard.
 
     return (
         <div className="dashboard-container">
