@@ -26,7 +26,7 @@ class Staff(models.Model):
     emergence_contact_name = models.CharField(max_length=50,null=True, blank=True)
     emergence_phone = models.CharField(max_length=50,null=True, blank=True)
     #employment
-    departments = models.ManyToManyField(Department,null=True, blank=True)
+    departments = models.ManyToManyField(Department, blank=True)
     employment_type = models.CharField(max_length=50,
                                        null=True, blank=True,
                                        choices=(('PART_TIME','part-time'),
@@ -38,8 +38,8 @@ class Staff(models.Model):
     #professional info
     qualification = models.CharField(max_length=50,null=True, blank=True)
     experience = models.CharField(max_length=50,null=True, blank=True)
-    subjects_taught = models.ManyToManyField(Subject, null=True, blank=True)
-    classes_taught = models.ManyToManyField(Classes, null=True, blank=True)
+    subjects_taught = models.ManyToManyField(Subject, blank=True)
+    classes_taught = models.ManyToManyField(Classes, blank=True)
     reg_number = models.CharField(max_length=50,null=True, blank=True)
     license_number = models.CharField(max_length=50,null=True, blank=True)
     #finance details
